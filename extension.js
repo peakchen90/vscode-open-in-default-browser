@@ -4,12 +4,11 @@ var opn = require('opn');
 function activate(context) {
 
     var disposable = vscode.commands.registerCommand('peakchen90.openInBrowser', function (e) {
-        var activeFile = vscode.window.activeTextEditor.document.fileName;
-        if (!/\.html?$/i.test(activeFile)) {
-            vscode.window.showWarningMessage('当前文件格式不是 HTML 或 HTM');
+        var filename = e._fsPath;
+        if (!/\.html?$/i.test(filename)) {
+            vscode.window.showWarningMessage('不能打开非HTML或HTM格式的文件');
             return;
         }
-        var filename = e._fsPath;
         opn(filename);
     });
 
