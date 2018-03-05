@@ -2,8 +2,15 @@
     "name": "open-html-in-browser",
     "displayName": "Open HTML in Default Browser",
     "description": "Open HTML in Default Browser",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "peakchen90",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/peakchen90/vscode-open-in-default-browser.git"
+    },
+    "bugs": {
+        "url": "https://github.com/peakchen90/vscode-open-in-default-browser/issues"
+    },
     "engines": {
         "vscode": "^1.10.0"
     },
@@ -13,6 +20,7 @@
     "keywords": [
         "open",
         "html",
+        "default",
         "browser"
     ],
     "icon": "icon.jpg",
