@@ -2,3 +2,5 @@
 - 用默认浏览器打开 HTML 文件
 - 在资源管理器中，HTML 文件右键显示 `在浏览器中打开` 菜单
 - 在编辑器中，HTML 文件右键显示 `在浏览器中打开` 菜单
+## 0.0.2: 2018/11/09
+- Use keybindings `ctrl+1`[windows] or `cmd+1`[mac] to open html file more faster
