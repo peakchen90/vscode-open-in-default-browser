@@ -2,7 +2,7 @@
     "name": "open-html-in-browser",
     "displayName": "Open HTML in Default Browser",
     "description": "Open HTML in Default Browser",
-    "version": "0.0.3",
+    "version": "1.0.0",
     "publisher": "peakchen90",
     "repository": {
         "type": "git",
@@ -51,9 +51,6 @@
                 }
             ]
         }
-    },
-    "scripts": {
-        "pub": "vsce publish patch"
     },
     "devDependencies": {
         "@types/mocha": "^2.2.32",
