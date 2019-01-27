@@ -32,7 +32,7 @@
         "commands": [
             {
                 "command": "peakchen90.openInBrowser",
-                "title": "在浏览器中打开"
+                "title": "%extension.openInBrowser.title%"
             }
         ],
         "menus": {
@@ -56,12 +56,12 @@
         "pub": "vsce publish patch"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
-        "eslint": "^3.6.0",
+        "@types/mocha": "^2.2.32",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "eslint": "^3.6.0",
+        "mocha": "^2.3.3",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
     },
     "dependencies": {
         "opn": "^4.0.2"
