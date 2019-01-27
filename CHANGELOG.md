@@ -1,3 +1,7 @@
+## 1.0.1: 2019/01/27
+- Shortcut key support: `ctrl + 1`
+- 快捷键支持: `ctrl + 1`
+
 ## 1.0.0: 2019/01/27
 - i18n support, support for English (en), Simplified Chinese (zh-cn), Traditional Chinese (zh-tw), Japanese (ja)
 - 国际化支持，支持英语(en)、简体中文(zh-cn)、繁体中文(zh-tw)、日语(ja)

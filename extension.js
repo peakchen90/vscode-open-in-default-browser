@@ -9,13 +9,15 @@ var locale = config.locale;
 function activate(context) {
 
     var disposable = vscode.commands.registerCommand('peakchen90.openInBrowser', function (e) {
-        var filename = e._fsPath;
+        var document = vscode.window.activeTextEditor.document;
+        var languageId = document.languageId;
+        var filename = document.fileName;
         var message = i18nHelper(locale, 'nonHTML.warn', 'Unable to open non-HTM or non-HTML files');
-        if (!/\.html?$/i.test(filename)) {
+        if (languageId === 'html') {
+            opn(filename);
+        } else if (e) {
             vscode.window.showWarningMessage(message);
-            return;
         }
-        opn(filename);
     });
 
     context.subscriptions.push(disposable);

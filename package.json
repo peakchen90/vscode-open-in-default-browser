@@ -2,7 +2,7 @@
     "name": "open-html-in-browser",
     "displayName": "Open HTML in Default Browser",
     "description": "Open HTML in Default Browser",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "peakchen90",
     "repository": {
         "type": "git",
@@ -50,7 +50,15 @@
                     "group": "1_modification"
                 }
             ]
-        }
+        },
+        "keybindings": [
+            {
+                "command": "peakchen90.openInBrowser",
+                "key": "ctrl+1",
+                "mac": "cmd+1",
+                "when": "editorTextFocus"
+            }
+        ]
     },
     "devDependencies": {
         "@types/mocha": "^2.2.32",
