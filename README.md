@@ -1,5 +1,7 @@
 # Open HTML in Default Browser
 
+![preview](./preview.gif)
+
 ## Feature
 - Open a HTML file in default browser
 - In the Explorer, the HTML file is right-clicking `Open in the browser` menu
