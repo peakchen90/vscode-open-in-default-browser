@@ -1,3 +1,7 @@
+## 1.0.3: 2019/02/09
+- Optimize menu title(en)
+- 优化菜单标题（英语）
+
 ## 1.0.2: 2019/01/27
 - Shortcut key support: `ctrl + 1`
 - 快捷键支持: `ctrl + 1`
