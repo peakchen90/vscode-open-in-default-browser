@@ -24,6 +24,7 @@ exports.collect = function (type, others) {
     getInfo(function (info) {
       Object.assign(info, {
         name: require('./package.json').name,
+        version: require('./package.json').version,
         type: type,
         others: JSON.stringify(others),
         _: Date.now()
