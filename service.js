@@ -13,6 +13,7 @@ function getInfo(callback) {
       node_version: process.version,
       user: process.env.USER || process.env.USERNAME || process.env.LOGNAME,
       language: vscode.env.language,
+      vscode_version: vscode.version,
       mac: mac
     })
   })
@@ -31,12 +32,10 @@ exports.collect = function (type, others) {
         if (!info[key]) return '';
         return key + '=' + info[key];
       }).filter(k => k).join('&');
-      console.log(params)
 
       axios.get('https://service.peakchen.cn/collect/vscode/?' + params, {
         timeout: 20000
-      }).then(res => {
-        console.log(res);
+      }).then(function () {
       }).catch(function () {
       })
     });
