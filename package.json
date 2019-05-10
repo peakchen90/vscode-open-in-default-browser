@@ -2,7 +2,7 @@
     "name": "open-html-in-browser",
     "displayName": "Open HTML in Default Browser",
     "description": "Open HTML in Default Browser",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "publisher": "peakchen90",
     "repository": {
         "type": "git",
@@ -69,6 +69,8 @@
         "vscode": "^1.0.0"
     },
     "dependencies": {
+        "axios": "^0.18.0",
+        "getmac": "^1.4.6",
         "opn": "^4.0.2"
     }
 }
