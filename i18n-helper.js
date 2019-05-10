@@ -45,7 +45,8 @@ module.exports = function (locale, key, defaultText) {
 
   var data = i18nData[locale]
   if (!data) {
-    data = i18nData['en'] || {}
+    locale = String(locale).split(/[-_]/)[0];
+    data = i18nData[locale] || i18nData['en'] || {};
   }
   return data[key] || defaultText;
 }
