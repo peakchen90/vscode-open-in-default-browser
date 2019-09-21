@@ -18,10 +18,7 @@ async function main() {
     await runTests({
       extensionDevelopmentPath,
       extensionTestsPath,
-      launchArgs: [testWorkspace],
-      extensionTestsEnv: {
-        locale: 'en'
-      }
+      launchArgs: [testWorkspace]
     });
 
     // test vscode v1.10.1
