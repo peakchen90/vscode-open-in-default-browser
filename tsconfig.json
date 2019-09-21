@@ -9,6 +9,7 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "removeComments": true,
+    "strict": true,
     "rootDirs": [
       "src",
       "i18n"

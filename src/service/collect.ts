@@ -2,14 +2,14 @@ import * as vscode from 'vscode';
 import http from './http';
 import {encodeBase64} from '../utils/utils';
 
-let baseInfo = null;
+let baseInfo: Record<string, any> | null = null;
 
-function getBaseInfo() {
+function getBaseInfo(): Promise<Record<string, any>> {
   return new Promise((resolve) => {
     if (baseInfo) {
       resolve(baseInfo);
     } else {
-      require('getmac').getMac((err, mac) => {
+      require('getmac').getMac((err: any, mac: string) => {
         if (err) {
           mac = '';
         }
@@ -43,7 +43,7 @@ export default async function collect(type: string, others: any) {
   try {
     await http.get('https://vscode.peakchen.cn/collect/send', {
       params: {
-        data: encodeBase64(data),
+        data: encodeBase64(JSON.stringify(data)),
         version: pkg.version.split('.')[0],
         _: Date.now(),
       }

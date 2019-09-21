@@ -8,7 +8,7 @@ let config: Record<string, any> = {};
 let locale: string = 'en';
 
 try {
-  config = JSON.parse(process.env.VSCODE_NLS_CONFIG);
+  config = JSON.parse(process.env.VSCODE_NLS_CONFIG as string);
   locale = config.locale;
 } catch (e) {
   console.error(e);
@@ -18,12 +18,12 @@ try {
 /**
  * 注册 openInBrowser 命令
  */
-export function registerOpenInBrowserCommand(context: vscode.ExtensionContext) {
+export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): void {
   const message = langHelper(locale, 'nonHTML.warn', 'Unable to open non-HTM or non-HTML file');
 
   const disposable: vscode.Disposable = vscode.commands.registerCommand('peakchen90.openInBrowser', (evt) => {
-    let filename;
-    let languageId;
+    let filename = '';
+    let languageId = '';
 
     if (evt && typeof evt.path === 'string') {
       const match = evt.path.match(/\.(\w+)$/);
