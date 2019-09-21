@@ -3,18 +3,19 @@
   "displayName": "Open HTML In Default Browser",
   "description": "Open HTML In Default Browser",
   "version": "2.0.0-alpha",
-  "main": "./dist/extension.js",
+  "main": "./dist/src/extension.js",
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
-    "test": "node ./dist/test/runTest.js"
+    "test": "node ./dist/__test__/runTest.js"
   },
   "publisher": "peakchen90",
   "engines": {
-    "vscode": "^1.38.0"
+    "vscode": "^1.8.0"
   },
+  "license": "MIT",
   "icon": "public/icon.jpg",
   "activationEvents": [
     "onCommand:peakchen90.openInBrowser"
@@ -27,6 +28,10 @@
       {
         "command": "peakchen90.openInBrowser",
         "title": "%extension.openInBrowser.title%"
+      },
+      {
+        "command": "peakchen90.helloWorld",
+        "title": "hello world"
       }
     ],
     "menus": {
@@ -50,7 +55,7 @@
         "command": "peakchen90.openInBrowser",
         "key": "ctrl+1",
         "mac": "cmd+1",
-        "when": "editorTextFocus"
+        "when": "resourceLangId == html && editorTextFocus"
       }
     ]
   },

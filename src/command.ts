@@ -19,26 +19,36 @@ try {
  * 注册 openInBrowser 命令
  */
 export function registerOpenInBrowserCommand(context: vscode.ExtensionContext) {
-  const disposable: vscode.Disposable = vscode.commands.registerCommand('peakchen90.openInBrowser', (evt) => {
-    const activeTextEditor = vscode.window.activeTextEditor as vscode.TextEditor;
-    const document = activeTextEditor.document;
-    const languageId = document.languageId;
-    const filename = document.fileName;
-    const message = langHelper(locale, 'nonHTML.warn', 'Unable to open non-HTM or non-HTML file');
-    let success = false;
+  const message = langHelper(locale, 'nonHTML.warn', 'Unable to open non-HTM or non-HTML file');
 
+  const disposable: vscode.Disposable = vscode.commands.registerCommand('peakchen90.openInBrowser', (evt) => {
+    let filename;
+    let languageId;
+
+    if (evt && typeof evt.path === 'string') {
+      const match = evt.path.match(/\.(\w+)$/);
+      if (match) {
+        filename = evt.fsPath;
+        languageId = match[1].toLowerCase();
+      }
+    } else {
+      const activeTextEditor = vscode.window.activeTextEditor as vscode.TextEditor;
+      const document = activeTextEditor.document;
+      languageId = document.languageId;
+      filename = document.fileName;
+    }
+
+    let success = false;
     if (languageId === 'html') {
       open(filename);
       success = true;
-    } else if (evt) {
+    } else {
       vscode.window.showWarningMessage(message);
-      console.log(message);
     }
 
     // send collect info
     const type = evt ? 'context_menu' : 'shortcut_key';
-    collect(type, {success}).then(() => {
-    });
+    collect(type, {success});
   });
 
   context.subscriptions.push(disposable);

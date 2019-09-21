@@ -1,14 +1,12 @@
 .vscode/**
 .idea/**
 .vscode-test/**
-dist/test/**
+dist/src/__test__/**
 src/**
-test/**
 .editorconfig
 .gitignore
 .eslintrc.js
 .eslintignore
 **/tsconfig.json
-**/tslint.json
 **/*.map
 **/*.ts

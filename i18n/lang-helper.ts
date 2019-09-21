@@ -5,7 +5,8 @@ let langData: Record<string, object> | null = null;
 
 function readLangConfig(): void {
   try {
-    const langFolder = path.resolve(__dirname, 'lang');
+    // 读取i18n/lang
+    const langFolder = path.resolve(__dirname, '../../i18n/lang');
     fs.readdirSync(langFolder).forEach((item) => {
       const match = item.match(/([\w-]+)\.json/i);
       const stat = fs.statSync(path.resolve(langFolder, item));

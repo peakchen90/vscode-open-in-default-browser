@@ -8,13 +8,16 @@
     ],
     "sourceMap": true,
     "resolveJsonModule": true,
-    "removeComments": true
+    "removeComments": true,
+    "rootDirs": [
+      "src",
+      "i18n"
+    ]
   },
   "include": [
-    "extension.ts",
-    "package.json",
     "src",
-    "test"
+    "i18n",
+    "package.json"
   ],
   "exclude": [
     "node_modules",
