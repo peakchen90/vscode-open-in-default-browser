@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "dist",
+    "lib": [
+      "es6"
+    ],
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "removeComments": true
+  },
+  "include": [
+    "extension.ts",
+    "package.json",
+    "src",
+    "test"
+  ],
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ]
+}

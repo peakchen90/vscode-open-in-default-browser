@@ -1,6 +1,6 @@
-# Open HTML in Default Browser
+# Open HTML In Default Browser
 
-![preview](./preview.gif)
+![preview](./public/preview.gif)
 
 ## Features
 - Open a HTML file in default browser
