@@ -1,8 +1,10 @@
 .vscode/**
 .idea/**
 .vscode-test/**
-dist/src/__test__/**
+dist/test/**
 src/**
+test/**
+i18n/*.md
 .editorconfig
 .gitignore
 .eslintrc.js

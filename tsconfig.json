@@ -12,11 +12,13 @@
     "strict": true,
     "rootDirs": [
       "src",
+      "test",
       "i18n"
     ]
   },
   "include": [
     "src",
+    "test",
     "i18n",
     "package.json"
   ],

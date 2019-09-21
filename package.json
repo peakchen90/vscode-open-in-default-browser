@@ -9,7 +9,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile",
-    "test": "node ./dist/__test__/runTest.js"
+    "test": "node ./dist/test/runTest.js"
   },
   "publisher": "peakchen90",
   "engines": {
