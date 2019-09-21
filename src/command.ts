@@ -39,7 +39,7 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
     }
 
     let success = false;
-    if (languageId === 'html') {
+    if (/^html?$/i.test(languageId)) {
       open(filename);
       success = true;
     } else {
