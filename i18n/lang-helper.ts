@@ -1,3 +1,5 @@
+import {getLocale} from '../src/utils/vscode';
+
 const path = require('path');
 const fs = require('fs');
 
@@ -35,7 +37,7 @@ function readLangConfig(): void {
  * @param key
  * @param defaultText
  */
-export default function langHelper(locale: string, key: string, defaultText: string): string {
+export function langHelper(locale: string, key: string, defaultText: string = ''): string {
   if (!langData) {
     langData = {};
     readLangConfig();
@@ -48,4 +50,9 @@ export default function langHelper(locale: string, key: string, defaultText: str
     data = langData[locale] || langData[defaultLocale] || {};
   }
   return (data && data[key]) || defaultText;
+}
+
+export default function $t(key: string): string {
+  const locale = getLocale();
+  return langHelper(locale, key);
 }

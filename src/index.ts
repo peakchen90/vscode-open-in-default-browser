@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import * as vscode from 'vscode';
 import {registerOpenInBrowserCommand} from './command';
 

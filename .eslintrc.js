@@ -17,6 +17,8 @@ module.exports = {
     "import/no-mutable-exports": "off",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
     "no-console": "off",
     "no-empty": ["error", {
       "allowEmptyCatch": true
@@ -29,7 +31,6 @@ module.exports = {
     "no-empty-function": "off",
     "no-nested-ternary": "off",
     "no-return-assign": "off",
-    "no-unused-vars": "error",
     "global-require": "off",
     "object-curly-spacing": "off",
     "max-len": "off",

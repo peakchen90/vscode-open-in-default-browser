@@ -21,3 +21,12 @@ export function getPort(start: number): Promise<number> {
     });
   });
 }
+
+/**
+ * 打开默认浏览器
+ * @param url
+ */
+export async function openBrowser(url: string): Promise<void> {
+  const open = require('open');
+  await open(url);
+}
