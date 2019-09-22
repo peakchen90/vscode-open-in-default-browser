@@ -13,7 +13,7 @@
   },
   "publisher": "peakchen90",
   "engines": {
-    "vscode": "^1.19.3"
+    "vscode": "^1.38.0"
   },
   "license": "MIT",
   "icon": "public/icon.jpg",

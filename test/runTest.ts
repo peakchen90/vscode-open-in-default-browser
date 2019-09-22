@@ -12,18 +12,10 @@ async function main() {
     const extensionTestsPath = path.resolve(__dirname, './suite/index');
 
     // test workspace
-    const testWorkspace = path.resolve(__dirname, '../../test-workspace');
+    const testWorkspace = path.resolve(__dirname, '../../test/test-workspace');
 
     // Download VS Code, unzip it and run the integration test
     await runTests({
-      extensionDevelopmentPath,
-      extensionTestsPath,
-      launchArgs: [testWorkspace]
-    });
-
-    // test vscode v1.10.1
-    await runTests({
-      version: '1.19.3',
       extensionDevelopmentPath,
       extensionTestsPath,
       launchArgs: [testWorkspace]
