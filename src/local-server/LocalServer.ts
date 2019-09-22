@@ -1,7 +1,8 @@
 import * as express from 'express';
-import {stat, Stats} from 'fs';
 import {CustomError, WorkspaceFolder} from './types';
-import {getPort, openBrowser} from '../utils/utils';
+import {
+  getIndexFilename, getPort, getStat, openBrowser
+} from '../utils/utils';
 import {getLocale, showWarningMessage} from '../utils/vscode';
 import $t from '../../i18n/lang-helper';
 
@@ -24,6 +25,7 @@ export default class LocalServer {
     this.app = null;
     this.workspaceFolder = workspaceFolder;
     this.rootPath = workspaceFolder.uri.fsPath;
+    this.port = null;
     this.locale = getLocale();
     this._isMounted = false;
     this._isDestroyed = false;
@@ -34,7 +36,7 @@ export default class LocalServer {
    */
   async createServer(): Promise<number> {
     if (this.isMounted()) {
-      return;
+      return this.port as number;
     }
 
     const {resolve} = require('path');
@@ -42,6 +44,7 @@ export default class LocalServer {
     this.app.engine('html', require('express-art-template'));
     this.app.set('views', resolve(__dirname, '../public/template'));
     this.app.set('view engine', 'html');
+    this.app.use(require('serve-favicon')(resolve(__dirname, '../public/favicon.ico')));
     this.app.use(require('compression')());
 
     this.app.use(this._handleRequest.bind(this));
@@ -98,24 +101,36 @@ export default class LocalServer {
     const {resolve} = require('path');
     const relativePath = req.url.replace(/^\//, '');
     const filename = resolve(this.rootPath, relativePath);
-    stat(filename, (err: CustomError, stats: Stats) => {
-      if (err) {
-        err.payload = 404;
-        next(err);
+    getStat(filename).then((stats) => {
+      if (stats.isDirectory()) {
+        getIndexFilename(filename).then((indexFile) => {
+          res.sendFile(indexFile);
+        }).catch(() => {
+          const error = new Error('404 Not Found');
+          error.name = '404';
+          next(error);
+        });
       } else if (!stats.isFile()) {
-        err = new Error('404 Not Found') as CustomError;
-        err.payload = 404;
+        const err = new Error('404 Not Found');
+        err.name = '404';
         next(err);
       } else {
         res.sendFile(filename);
       }
+    }).catch((err) => {
+      err.name = '404';
+      next(err);
     });
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private _handleCatch(err: CustomError, req: express.Request, res: express.Response, next: express.NextFunction): void {
     if (err) {
-      res.status(err.payload || 500);
+      if (err.name === '404') {
+        res.status(404);
+      } else {
+        res.status(500);
+      }
       res.render('error', {
         lang: this.locale,
         title: err.message || 'Error Page',

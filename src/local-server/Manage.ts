@@ -20,7 +20,7 @@ export default class Manage {
     const path = workspaceFolder.uri.fsPath;
 
     if (this.has(path)) {
-      const data = this.map.get(path);
+      const data = this.map.get(path) as WorkspaceData;
       data.workspaceFolder = workspaceFolder;
       data.server.update(workspaceFolder);
       return data;

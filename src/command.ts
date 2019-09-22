@@ -3,6 +3,7 @@ import collect from './service/collect';
 import {showWarningMessage} from './utils/vscode';
 import {openBrowser} from './utils/utils';
 import $t from '../i18n/lang-helper';
+import {openBrowserByServer} from './local-server';
 
 /**
  * 注册 openInBrowser 命令
@@ -27,7 +28,8 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
 
     let success = false;
     if (/^html?$/i.test(languageId)) {
-      openBrowser(filename);
+      // openBrowser(filename);
+      openBrowserByServer(filename);
       success = true;
     } else {
       showWarningMessage($t('nonHTML.warn'));
