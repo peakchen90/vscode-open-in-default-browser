@@ -2,19 +2,14 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "outDir": "dist",
     "lib": [
       "es6"
     ],
+    "allowJs": true,
     "sourceMap": true,
     "resolveJsonModule": true,
     "removeComments": true,
-    "strict": true,
-    "rootDirs": [
-      "src",
-      "test",
-      "i18n"
-    ]
+    "strict": true
   },
   "include": [
     "src",

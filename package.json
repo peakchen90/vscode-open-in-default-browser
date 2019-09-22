@@ -3,12 +3,9 @@
   "displayName": "Open HTML In Default Browser",
   "description": "Open HTML In Default Browser",
   "version": "2.0.0-alpha",
-  "main": "./dist/src/extension.js",
+  "main": "./dist/extension.js",
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile",
+    "dev": "cross-env NODE_ENV=development webpack -w",
     "test": "node ./dist/test/runTest.js"
   },
   "publisher": "peakchen90",
@@ -74,23 +71,30 @@
     "chrome"
   ],
   "devDependencies": {
+    "@types/express": "4.17.1",
     "@types/glob": "^7.1.1",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.14.18",
     "@types/vscode": "^1.38.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
+    "cross-env": "^6.0.0",
     "eslint": "^6.4.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "glob": "^7.1.4",
     "mocha": "^6.2.0",
+    "ts-loader": "^6.1.2",
     "typescript": "^3.6.3",
-    "vscode-test": "^1.2.0"
+    "vscode-test": "^1.2.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "getmac": "^1.4.6",
-    "open": "^6.4.0"
+    "axios": "0.19.0",
+    "express": "4.17.1",
+    "getmac": "1.4.6",
+    "getport": "0.1.0",
+    "open": "6.4.0"
   }
 }
