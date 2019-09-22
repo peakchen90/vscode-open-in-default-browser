@@ -1,6 +1,6 @@
 import * as express from 'express';
 import {stat, Stats} from 'fs';
-import {WorkspaceFolder} from './types';
+import {CustomError, WorkspaceFolder} from './types';
 import {getPort, openBrowser} from '../utils/utils';
 import {getLocale, showWarningMessage} from '../utils/vscode';
 import $t from '../../i18n/lang-helper';
@@ -14,6 +14,8 @@ export default class LocalServer {
 
   private port: number | null;
 
+  private locale: string;
+
   private _isMounted: boolean;
 
   private _isDestroyed: boolean;
@@ -22,6 +24,7 @@ export default class LocalServer {
     this.app = null;
     this.workspaceFolder = workspaceFolder;
     this.rootPath = workspaceFolder.uri.fsPath;
+    this.locale = getLocale();
     this._isMounted = false;
     this._isDestroyed = false;
   }
@@ -29,28 +32,29 @@ export default class LocalServer {
   /**
    * 创建服务
    */
-  async createServer(): Promise<void> {
+  async createServer(): Promise<number> {
     if (this.isMounted()) {
       return;
     }
 
+    const {resolve} = require('path');
     this.app = express();
-    this.app.engine('art', require('express-art-template'));
-    this.app.set('views', require('path').resolve(__dirname, '../public/template'));
-    this.app.set('view engine', 'art');
+    this.app.engine('html', require('express-art-template'));
+    this.app.set('views', resolve(__dirname, '../public/template'));
+    this.app.set('view engine', 'html');
     this.app.use(require('compression')());
 
-    this.app.use(this.handleRequest);
-    // this.app.use(this.handleRequest);
-    this.app.use(this.handleCatch);
+    this.app.use(this._handleRequest.bind(this));
+    this.app.use(this._handleCatch.bind(this));
     this.port = await getPort(52330);
     this.app.listen(this.port);
+    return this.port;
   }
 
   /**
    * 更新workspace
    */
-  update(workspaceFolder: WorkspaceFolder) {
+  update(workspaceFolder: WorkspaceFolder): void {
     this.workspaceFolder = workspaceFolder;
     this.rootPath = workspaceFolder.uri.fsPath;
   }
@@ -65,11 +69,11 @@ export default class LocalServer {
     this._isDestroyed = false;
   }
 
-  isMounted() {
+  isMounted(): boolean {
     return this._isMounted;
   }
 
-  isDestroyed() {
+  isDestroyed(): boolean {
     return this._isDestroyed;
   }
 
@@ -90,30 +94,35 @@ export default class LocalServer {
     await openBrowser(`http://localhost:${this.port}/${url}`);
   }
 
-  private handleRequest(req: express.Request, res: express.Response, next: express.NextFunction) {
+  private _handleRequest(req: express.Request, res: express.Response, next: express.NextFunction): void {
     const {resolve} = require('path');
     const relativePath = req.url.replace(/^\//, '');
     const filename = resolve(this.rootPath, relativePath);
-    stat(filename, (err, stats: Stats) => {
+    stat(filename, (err: CustomError, stats: Stats) => {
       if (err) {
-        res.status(404);
-        next(new Error('404 Not Found'));
+        err.payload = 404;
+        next(err);
       } else if (!stats.isFile()) {
-        res.status(404);
-        next(new Error('404 Not Found'));
+        err = new Error('404 Not Found') as CustomError;
+        err.payload = 404;
+        next(err);
       } else {
         res.sendFile(filename);
       }
     });
   }
 
-  private handleCatch(err: any, req: express.Request, res: express.Response) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  private _handleCatch(err: CustomError, req: express.Request, res: express.Response, next: express.NextFunction): void {
     if (err) {
+      res.status(err.payload || 500);
       res.render('error', {
-        lang: getLocale(),
+        lang: this.locale,
         title: err.message || 'Error Page',
         content: err.stack || err.message || '500 Error'
       });
+    } else {
+      res.end();
     }
   }
 }

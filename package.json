@@ -90,13 +90,14 @@
     "webpack-cli": "^3.3.9"
   },
   "dependencies": {
-    "art-template": "^4.13.2",
+    "art-template": "4.13.2",
     "axios": "0.19.0",
-    "compression": "^1.7.4",
+    "compression": "1.7.4",
     "express": "4.17.1",
-    "express-art-template": "^1.0.1",
+    "express-art-template": "1.0.1",
     "getmac": "1.4.6",
     "getport": "0.1.0",
-    "open": "6.4.0"
+    "open": "6.4.0",
+    "serve-favicon": "2.5.0"
   }
 }

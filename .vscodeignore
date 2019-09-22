@@ -1,8 +1,7 @@
 .vscode/**
 .idea/**
 .vscode-test/**
-!dist/extension.js
-dist/**
+dist/__out__/**
 src/**
 test/**
 i18n/*.md

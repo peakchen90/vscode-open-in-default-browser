@@ -9,3 +9,7 @@ export interface WorkspaceData {
   path: string,
   server: LocalServer
 }
+
+export interface CustomError extends Error {
+  payload: any
+}
