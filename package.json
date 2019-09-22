@@ -5,8 +5,7 @@
   "version": "2.0.0-alpha",
   "main": "./dist/extension.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack -w",
-    "test": "node ./dist/test/runTest.js"
+    "dev": "cross-env NODE_ENV=development webpack -w"
   },
   "publisher": "peakchen90",
   "engines": {
