@@ -3,20 +3,20 @@
     "module": "commonjs",
     "target": "es6",
     "outDir": "dist/__out__",
+    "noImplicitAny": true,
     "lib": [
       "es6"
     ],
-    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "sourceMap": true,
-    "resolveJsonModule": true,
     "removeComments": true,
     "strict": true
   },
   "include": [
     "src",
     "test",
-    "i18n",
-    "package.json"
+    "i18n"
   ],
   "exclude": [
     "node_modules",

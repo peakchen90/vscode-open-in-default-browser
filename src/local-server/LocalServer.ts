@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import {CustomError, WorkspaceFolder} from './types';
 import {
   getIndexFilename, getPort, getStat, openBrowser

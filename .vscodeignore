@@ -2,6 +2,7 @@
 .idea/**
 .vscode-test/**
 dist/__out__/**
+dist/runTest.js
 src/**
 test/**
 i18n/*.md
@@ -9,6 +10,7 @@ i18n/*.md
 .gitignore
 .eslintrc.js
 .eslintignore
+rollup.config.js
 **/tsconfig.json
 **/*.map
 **/*.ts
