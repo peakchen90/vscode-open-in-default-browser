@@ -11,9 +11,10 @@ const config = {
   },
   output: {
     dir: 'dist',
-    entryFileNames: '[name].js',
     format: 'cjs',
-    sourcemap: true
+    sourcemap: true,
+    entryFileNames: '[name].js',
+    chunkFileNames: '[name].js'
   },
   plugins: [
     commonjs(),

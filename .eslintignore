@@ -1,3 +1,6 @@
+.vscode-test
+.vscode
+.idea
 node_modules
 dist
 test/workspace

@@ -2,7 +2,7 @@ import express from 'express';
 import * as path from 'path';
 import {CustomError, WorkspaceFolder} from './types';
 import {
-  getIndexFilename, getPort, getStat, openBrowser
+  getIndexFilename, getPort, getStat, openBrowser, resolveRoot
 } from '../utils/utils';
 import {getLocale, showWarningMessage} from '../utils/vscode';
 import $t from '../../i18n/lang-helper';
@@ -42,9 +42,9 @@ export default class LocalServer {
 
     this.app = express();
     this.app.engine('html', require('express-art-template'));
-    this.app.set('views', path.resolve(__dirname, '../public/template'));
+    this.app.set('views', resolveRoot('public/template'));
     this.app.set('view engine', 'html');
-    this.app.use(require('serve-favicon')(path.resolve(__dirname, '../public/favicon.ico')));
+    this.app.use(require('serve-favicon')(resolveRoot('public/favicon.ico')));
     this.app.use(require('compression')());
 
     this.app.use(this._handleRequest.bind(this));

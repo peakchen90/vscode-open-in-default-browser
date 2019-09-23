@@ -29,7 +29,7 @@ export function getStat(filename: string): Promise<fs.Stats> {
  * 返回相对于根目录的路径
  * @param pathname
  */
-export function resolveRoot(pathname: string): string {
+export function resolveRoot(pathname: string = ''): string {
   return path.resolve(__dirname, '..', pathname);
 }
 
