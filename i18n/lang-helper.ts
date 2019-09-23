@@ -12,7 +12,7 @@ let langData: LangData | null = null;
 function readLangConfig(): void {
   try {
     // 读取i18n/lang
-    const langFolder = resolveRoot('../i18n/lang');
+    const langFolder = resolveRoot('i18n/lang');
     fs.readdirSync(langFolder).forEach((item: string) => {
       const match = item.match(/([\w-]+)\.json/i);
       const stat = fs.statSync(path.resolve(langFolder, item));

@@ -6,7 +6,7 @@ async function main() {
   try {
     // The folder containing the Extension Manifest package.json
     // Passed to `--extensionDevelopmentPath`
-    const extensionDevelopmentPath = resolveRoot('test/test-workspace');
+    const extensionDevelopmentPath = resolveRoot();
 
     // The path to test runner
     // Passed to --extensionTestsPath
@@ -17,12 +17,11 @@ async function main() {
 
     // Download VS Code, unzip it and run the integration test
     await runTests({
-      version: '1.37.1',
+      version: '1.38.1',
       extensionDevelopmentPath,
       extensionTestsPath: '',
       launchArgs: [
-        testWorkspace,
-        '--disable-extensions'
+        testWorkspace
       ]
     });
   } catch (err) {
