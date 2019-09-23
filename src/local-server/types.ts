@@ -6,7 +6,7 @@ export type WorkspaceFolders = WorkspaceFolder[];
 
 export interface WorkspaceData {
   workspaceFolder: WorkspaceFolder,
-  path: string,
+  dirname: string,
   server: LocalServer
 }
 

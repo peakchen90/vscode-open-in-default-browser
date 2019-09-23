@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import http from './http';
-import {encodeBase64} from '../utils/utils';
+import {encodeBase64, parseJSONFile, resolveRoot} from '../utils/utils';
 
 let baseInfo: Record<string, any> | null = null;
+let pkg: any = null;
 
 function getBaseInfo(): Promise<Record<string, any>> {
   return new Promise((resolve) => {
@@ -31,7 +32,9 @@ function getBaseInfo(): Promise<Record<string, any>> {
 
 export default async function collect(type: string, others: any) {
   await getBaseInfo();
-  const pkg = require('../../package.json');
+  if (!pkg) {
+    pkg = parseJSONFile(resolveRoot('package.json'));
+  }
   const data = {
     ...baseInfo,
     name: pkg.name,

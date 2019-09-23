@@ -1,5 +1,4 @@
 const commonjs = require('rollup-plugin-commonjs');
-// const nodeResolve = require('rollup-plugin-node-resolve');
 const typescript = require('rollup-plugin-typescript');
 const json = require('rollup-plugin-json');
 const buildInModules = require('builtin-modules');

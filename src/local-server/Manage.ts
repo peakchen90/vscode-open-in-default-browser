@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 import {WorkspaceData, WorkspaceFolder, WorkspaceFolders} from './types';
 import LocalServer from './LocalServer';
 
@@ -17,10 +18,10 @@ export default class Manage {
   }
 
   add(workspaceFolder: WorkspaceFolder): WorkspaceData {
-    const path = workspaceFolder.uri.fsPath;
+    const dirname = workspaceFolder.uri.fsPath;
 
-    if (this.has(path)) {
-      const data = this.map.get(path) as WorkspaceData;
+    if (this.has(dirname)) {
+      const data = this.map.get(dirname) as WorkspaceData;
       data.workspaceFolder = workspaceFolder;
       data.server.update(workspaceFolder);
       return data;
@@ -29,28 +30,27 @@ export default class Manage {
     const server = new LocalServer(workspaceFolder);
     const data = {
       workspaceFolder,
-      path,
+      dirname,
       server
     };
-    this.map.set(path, data);
+    this.map.set(dirname, data);
     return data;
   }
 
-  remove(path: string): void {
-    this.map.delete(path);
+  remove(dirname: string): void {
+    this.map.delete(dirname);
   }
 
-  get(path: string): WorkspaceData | null {
-    return this.map.get(path) || null;
+  get(dirname: string): WorkspaceData | null {
+    return this.map.get(dirname) || null;
   }
 
   getByFilename(filename: string): WorkspaceData | null {
-    const {relative} = require('path');
     let target: WorkspaceData | null = null;
     let relativeLength: number = 0;
 
     this.map.forEach((data) => {
-      const relativePath = relative(data.path, filename);
+      const relativePath = path.relative(data.dirname, filename);
       if (/^\.\./.test(relativePath)) {
         return;
       }
@@ -66,8 +66,8 @@ export default class Manage {
     return target;
   }
 
-  has(path: string): boolean {
-    return this.map.has(path);
+  has(dirname: string): boolean {
+    return this.map.has(dirname);
   }
 
   destroy() {
@@ -96,8 +96,8 @@ export default class Manage {
       }
       if (removed.length > 0) {
         removed.forEach((workspaceFolder) => {
-          const path = workspaceFolder.uri.fsPath;
-          this.remove(path);
+          const dirname = workspaceFolder.uri.fsPath;
+          this.remove(dirname);
         });
       }
     });

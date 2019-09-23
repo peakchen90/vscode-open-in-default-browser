@@ -1,4 +1,5 @@
 import express from 'express';
+import * as path from 'path';
 import {CustomError, WorkspaceFolder} from './types';
 import {
   getIndexFilename, getPort, getStat, openBrowser
@@ -39,12 +40,11 @@ export default class LocalServer {
       return this.port as number;
     }
 
-    const {resolve} = require('path');
     this.app = express();
     this.app.engine('html', require('express-art-template'));
-    this.app.set('views', resolve(__dirname, '../public/template'));
+    this.app.set('views', path.resolve(__dirname, '../public/template'));
     this.app.set('view engine', 'html');
-    this.app.use(require('serve-favicon')(resolve(__dirname, '../public/favicon.ico')));
+    this.app.use(require('serve-favicon')(path.resolve(__dirname, '../public/favicon.ico')));
     this.app.use(require('compression')());
 
     this.app.use(this._handleRequest.bind(this));
@@ -90,17 +90,15 @@ export default class LocalServer {
       await this.createServer();
     }
 
-    const {relative, sep} = require('path');
-    const relativePath = relative(this.rootPath, filename);
-    const url = relativePath.split(sep).join('/');
+    const relativePath = path.relative(this.rootPath, filename);
+    const url = relativePath.split(path.sep).join('/');
 
     await openBrowser(`http://localhost:${this.port}/${url}`);
   }
 
   private _handleRequest(req: express.Request, res: express.Response, next: express.NextFunction): void {
-    const {resolve} = require('path');
     const relativePath = req.url.replace(/^\//, '');
-    const filename = resolve(this.rootPath, relativePath);
+    const filename = path.resolve(this.rootPath, relativePath);
     getStat(filename).then((stats) => {
       if (stats.isDirectory()) {
         getIndexFilename(filename).then((indexFile) => {

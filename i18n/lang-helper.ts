@@ -1,7 +1,8 @@
+import * as path from 'path';
+import * as fs from 'fs';
 import {getLocale} from '../src/utils/vscode';
+import {resolveRoot} from '../src/utils/utils';
 
-const path = require('path');
-const fs = require('fs');
 
 type LocaleData = Record<string, string>
 type LangData = Record<string, LocaleData>;
@@ -11,16 +12,16 @@ let langData: LangData | null = null;
 function readLangConfig(): void {
   try {
     // 读取i18n/lang
-    const langFolder = path.resolve(__dirname, '../i18n/lang');
+    const langFolder = resolveRoot('../i18n/lang');
     fs.readdirSync(langFolder).forEach((item: string) => {
       const match = item.match(/([\w-]+)\.json/i);
       const stat = fs.statSync(path.resolve(langFolder, item));
       if (match && stat.isFile()) {
         try {
           const locale = match[1].toLowerCase();
-          const content = fs.readFileSync(path.resolve(langFolder, item));
+          const content = fs.readFileSync(path.resolve(langFolder, item)).toString();
           langData = langData as LangData;
-          langData[locale] = JSON.parse(content);
+          langData[locale] = JSON.parse(content as string);
         } catch (e) {
           console.error(e);
         }
