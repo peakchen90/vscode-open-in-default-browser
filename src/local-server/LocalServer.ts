@@ -63,8 +63,6 @@ export default class LocalServer {
     app.use(this._handleCatch.bind(this));
 
     this.port = await getPort(52330);
-    // TODO
-    this.port = 52330;
     this.server = http.createServer(app);
     this.server.listen(this.port);
 

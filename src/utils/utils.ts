@@ -109,3 +109,42 @@ export async function openBrowser(url: string): Promise<void> {
   const open = require('open');
   await open(url);
 }
+
+/**
+ * 返回相对路径，如果rootPath不是filename的父级，则返回null
+ * @param rootPath
+ * @param filename
+ */
+export function getRelativePath(rootPath: string, filename: string): string | null {
+  const relativePath = path.relative(rootPath, filename);
+  if (/^\.\./.test(relativePath)) {
+    return null;
+  }
+  return relativePath;
+}
+
+/**
+ * 查找map的值，类似Array.prototype.find
+ * @param map
+ * @param callback
+ */
+export function findMap<K, T>(
+  map: Map<K, T>,
+  callback: (value: T, key: K, map: Map<K, T>) => boolean
+): { key: K, value: T } | undefined {
+  const keys = map.keys();
+  map.entries();
+  const result = keys.next();
+  while (!result.done) {
+    const key = result.value;
+    const value = map.get(key) as T;
+    const isFound = callback(value, key, map);
+    if (isFound) {
+      return {
+        key,
+        value
+      };
+    }
+  }
+  return undefined;
+}

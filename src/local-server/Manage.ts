@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 import {WorkspaceData, WorkspaceFolder, WorkspaceFolders} from './types';
 import LocalServer from './LocalServer';
 import {showErrorMessage} from '../utils/vscode';
 import $t from '../../i18n/lang-helper';
+import {findMap, getRelativePath} from '../utils/utils';
 
 export default class Manage {
   private workspaceFolders: WorkspaceFolders | undefined;
@@ -32,12 +32,12 @@ export default class Manage {
     }
 
     const server = new LocalServer(workspaceFolder);
-    const data = {
-      workspaceFolder,
-      dirname,
-      server
-    };
+    const data = {workspaceFolder, dirname, server};
     this.map.set(dirname, data);
+
+    if (findMap(this.map, (item) => getRelativePath(dirname, item.dirname) != null)) {
+      server.createServer();
+    }
     return data;
   }
 
@@ -70,14 +70,14 @@ export default class Manage {
     let relativeLength: number = 0;
 
     this.map.forEach((data) => {
-      const relativePath = path.relative(data.dirname, filename);
-      if (/^\.\./.test(relativePath)) {
+      const relativePath = getRelativePath(data.dirname, filename);
+      if (relativePath == null) {
         return;
       }
       if (!target) {
         target = data;
         relativeLength = relativePath.length;
-      } else if (relativePath.length < relativeLength) {
+      } else if (relativePath.length > relativeLength) {
         target = data;
         relativeLength = relativePath.length;
       }

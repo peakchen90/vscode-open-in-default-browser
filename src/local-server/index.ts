@@ -1,7 +1,33 @@
 import Manage from './Manage';
+import {showErrorMessage} from '../utils/vscode';
+import $t from '../../i18n/lang-helper';
 
-const manage = new Manage();
+let manage: Manage | null = null;
 
+/**
+ * 初始化
+ */
+export function initLocalServerManage() {
+  manage = new Manage();
+}
+
+/**
+ * 销毁
+ */
+export function destroyLocalServerManage() {
+  if (manage) {
+    manage.destroy();
+  }
+}
+
+/**
+ * 打开浏览器
+ * @param filename
+ */
 export function openBrowserByServer(filename: string) {
-  return manage.openBrowser(filename);
+  if (!manage) {
+    showErrorMessage($t('localServer.unknownException'));
+    return;
+  }
+  return (manage as Manage).openBrowser(filename);
 }
