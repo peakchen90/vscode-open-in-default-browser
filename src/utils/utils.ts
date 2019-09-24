@@ -133,18 +133,14 @@ export function findMap<K, T>(
   callback: (value: T, key: K, map: Map<K, T>) => boolean
 ): { key: K, value: T } | undefined {
   const keys = map.keys();
-  map.entries();
-  const result = keys.next();
-  while (!result.done) {
-    const key = result.value;
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key of keys) {
     const value = map.get(key) as T;
-    const isFound = callback(value, key, map);
-    if (isFound) {
-      return {
-        key,
-        value
-      };
+    if (callback(value, key, map)) {
+      return {key, value};
     }
   }
+
   return undefined;
 }

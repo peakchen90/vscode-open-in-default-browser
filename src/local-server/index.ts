@@ -1,6 +1,4 @@
 import Manage from './Manage';
-import {showErrorMessage} from '../utils/vscode';
-import $t from '../../i18n/lang-helper';
 
 let manage: Manage | null = null;
 
@@ -26,8 +24,7 @@ export function destroyLocalServerManage() {
  */
 export function openBrowserByServer(filename: string) {
   if (!manage) {
-    showErrorMessage($t('localServer.unknownException'));
-    return;
+    initLocalServerManage();
   }
   return (manage as Manage).openBrowser(filename);
 }

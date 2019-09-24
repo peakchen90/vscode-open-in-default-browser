@@ -27,7 +27,7 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
     }
 
     let success = false;
-    if (/^html?$/i.test(languageId)) {
+    if (/^x?html?$/i.test(languageId)) {
       // openBrowser(filename);
       openBrowserByServer(filename);
       success = true;
