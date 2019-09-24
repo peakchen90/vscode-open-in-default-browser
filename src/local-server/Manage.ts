@@ -3,7 +3,7 @@ import {WorkspaceData, WorkspaceFolder, WorkspaceFolders} from './types';
 import LocalServer from './LocalServer';
 import {showErrorMessage} from '../utils/vscode';
 import $t from '../../i18n/lang-helper';
-import {findMap, getRelativePath} from '../utils/utils';
+import {getRelativePath} from '../utils/utils';
 
 export default class Manage {
   private workspaceFolders: WorkspaceFolders | undefined;
@@ -12,8 +12,7 @@ export default class Manage {
 
   constructor() {
     this.map = new Map();
-    this._updateWorkspaceFolder();
-    this._resolveMap();
+    this._resolveWorkspaceMap();
     this.cancelListening = this._listenWorkspaceFoldersChange();
   }
 
@@ -122,13 +121,8 @@ export default class Manage {
    * @private
    */
   private _listenWorkspaceFoldersChange(): () => void {
-    const disposable = vscode.workspace.onDidChangeWorkspaceFolders(({added, removed}) => {
-      if (added.length > 0) {
-        added.forEach((workspaceFolder) => this.add(workspaceFolder));
-      }
-      if (removed.length > 0) {
-        removed.forEach((workspaceFolder) => this.remove(workspaceFolder.uri.fsPath));
-      }
+    const disposable = vscode.workspace.onDidChangeWorkspaceFolders(() => {
+      this._resolveWorkspaceMap();
     });
 
     return () => {
@@ -140,20 +134,29 @@ export default class Manage {
   }
 
   /**
-   * 更新工作区
-   * @private
-   */
-  private _updateWorkspaceFolder() {
-    this.workspaceFolders = vscode.workspace.workspaceFolders;
-  }
-
-  /**
    * resolve workspace map
    * @private
    */
-  private _resolveMap() {
+  private _resolveWorkspaceMap() {
+    this.workspaceFolders = vscode.workspace.workspaceFolders;
+
     if (Array.isArray(this.workspaceFolders)) {
-      this.workspaceFolders.forEach(this.add.bind(this));
+      // added
+      this.workspaceFolders.forEach((workspaceFolder) => {
+        const dirname = workspaceFolder.uri.fsPath;
+        if (!this.get(dirname)) {
+          this.add(workspaceFolder);
+        }
+      });
+
+      // removed
+      const removed: string[] = [];
+      this.map.forEach((data) => {
+        if (!(this.workspaceFolders as WorkspaceFolders).find((item) => item.uri.fsPath === data.dirname)) {
+          removed.push(data.dirname);
+        }
+      });
+      removed.forEach((item) => this.remove(item));
     }
   }
 }
