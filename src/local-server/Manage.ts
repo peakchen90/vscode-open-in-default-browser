@@ -2,12 +2,12 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import {WorkspaceData, WorkspaceFolder, WorkspaceFolders} from './types';
 import LocalServer from './LocalServer';
+import {showErrorMessage} from '../utils/vscode';
+import $t from '../../i18n/lang-helper';
 
 export default class Manage {
   private workspaceFolders: WorkspaceFolders | undefined;
-
   private readonly map: Map<string, WorkspaceData>;
-
   private readonly cancelListening: () => void;
 
   constructor() {
@@ -17,13 +17,17 @@ export default class Manage {
     this.cancelListening = this._listenWorkspaceFoldersChange();
   }
 
+  /**
+   * 添加workspace
+   * @param workspaceFolder
+   */
   add(workspaceFolder: WorkspaceFolder): WorkspaceData {
     const dirname = workspaceFolder.uri.fsPath;
 
     if (this.has(dirname)) {
       const data = this.map.get(dirname) as WorkspaceData;
       data.workspaceFolder = workspaceFolder;
-      data.server.update(workspaceFolder);
+      data.server.updateWorkspace(workspaceFolder);
       return data;
     }
 
@@ -37,14 +41,30 @@ export default class Manage {
     return data;
   }
 
+  /**
+   * 移出workspace
+   * @param dirname
+   */
   remove(dirname: string): void {
+    const target = this.get(dirname);
+    if (target) {
+      target.server.destroy();
+    }
     this.map.delete(dirname);
   }
 
+  /**
+   * 返回workspace数据
+   * @param dirname
+   */
   get(dirname: string): WorkspaceData | null {
     return this.map.get(dirname) || null;
   }
 
+  /**
+   * 根据工作区的文件返回workspace数据
+   * @param filename
+   */
   getByFilename(filename: string): WorkspaceData | null {
     let target: WorkspaceData | null = null;
     let relativeLength: number = 0;
@@ -66,10 +86,17 @@ export default class Manage {
     return target;
   }
 
+  /**
+   * 判断是否存在workspace
+   * @param dirname
+   */
   has(dirname: string): boolean {
     return this.map.has(dirname);
   }
 
+  /**
+   * 销毁实例
+   */
   destroy() {
     this.workspaceFolders = undefined;
     this.map.forEach((item) => {
@@ -79,9 +106,14 @@ export default class Manage {
     this.cancelListening();
   }
 
+  /**
+   * 打开浏览器
+   * @param filename
+   */
   async openBrowser(filename: string): Promise<boolean> {
     const workspaceData = this.getByFilename(filename);
     if (!workspaceData) {
+      showErrorMessage($t('localServer.noMatchWorkspace'));
       return false;
     }
 
@@ -89,16 +121,17 @@ export default class Manage {
     return true;
   }
 
+  /**
+   * 监听workspace改变
+   * @private
+   */
   private _listenWorkspaceFoldersChange(): () => void {
     const disposable = vscode.workspace.onDidChangeWorkspaceFolders(({added, removed}) => {
       if (added.length > 0) {
         added.forEach((workspaceFolder) => this.add(workspaceFolder));
       }
       if (removed.length > 0) {
-        removed.forEach((workspaceFolder) => {
-          const dirname = workspaceFolder.uri.fsPath;
-          this.remove(dirname);
-        });
+        removed.forEach((workspaceFolder) => this.remove(workspaceFolder.uri.fsPath));
       }
     });
 
@@ -110,15 +143,21 @@ export default class Manage {
     };
   }
 
+  /**
+   * 更新工作区
+   * @private
+   */
   private _updateWorkspaceFolder() {
     this.workspaceFolders = vscode.workspace.workspaceFolders;
   }
 
+  /**
+   * resolve workspace map
+   * @private
+   */
   private _resolveMap() {
     if (Array.isArray(this.workspaceFolders)) {
-      this.workspaceFolders.forEach((workspaceFolder: WorkspaceFolder) => {
-        this.add(workspaceFolder);
-      });
+      this.workspaceFolders.forEach(this.add.bind(this));
     }
   }
 }

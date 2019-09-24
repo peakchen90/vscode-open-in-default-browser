@@ -28,3 +28,11 @@ export function getLocale(): string {
 export function showWarningMessage(message: string): void {
   vscode.window.showWarningMessage(message);
 }
+
+/**
+ * 提示错误信息
+ * @param message
+ */
+export function showErrorMessage(message: string): void {
+  vscode.window.showErrorMessage(message);
+}

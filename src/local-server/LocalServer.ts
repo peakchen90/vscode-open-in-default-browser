@@ -1,63 +1,84 @@
-import express from 'express';
 import * as path from 'path';
-import {CustomError, WorkspaceFolder} from './types';
+import * as http from 'http';
+import express from 'express';
+import {WorkspaceFolder} from './types';
 import {
   getIndexFilename, getPort, getStat, openBrowser, resolveRoot
 } from '../utils/utils';
-import {getLocale, showWarningMessage} from '../utils/vscode';
+import {getLocale, showErrorMessage} from '../utils/vscode';
 import $t from '../../i18n/lang-helper';
 
 export default class LocalServer {
-  private app: express.Application | null;
-
+  private server: http.Server | null;
   private workspaceFolder: WorkspaceFolder;
-
   private rootPath: string;
-
   private port: number | null;
-
   private locale: string;
-
-  private _isMounted: boolean;
-
   private _isDestroyed: boolean;
 
   constructor(workspaceFolder: WorkspaceFolder) {
-    this.app = null;
+    this.server = null;
     this.workspaceFolder = workspaceFolder;
     this.rootPath = workspaceFolder.uri.fsPath;
     this.port = null;
     this.locale = getLocale();
-    this._isMounted = false;
     this._isDestroyed = false;
   }
 
   /**
-   * 创建服务
+   * 打开浏览器
+   * @param filename
    */
-  async createServer(): Promise<number> {
-    if (this.isMounted()) {
-      return this.port as number;
+  async openBrowser(filename: string): Promise<void> {
+    if (this.isDestroyed()) {
+      return;
+    }
+    if (!this.isReady()) {
+      await this.createServer().catch((err: Error) => {
+        showErrorMessage(`${$t('localServer.createError')} ${err.message}`);
+        throw err;
+      });
     }
 
-    this.app = express();
-    this.app.engine('html', require('express-art-template'));
-    this.app.set('views', resolveRoot('public/template'));
-    this.app.set('view engine', 'html');
-    this.app.use(require('serve-favicon')(resolveRoot('public/favicon.ico')));
-    this.app.use(require('compression')());
+    const relativePath = path.relative(this.rootPath, filename);
+    const url = relativePath.split(path.sep).join('/');
+    await openBrowser(`http://localhost:${this.port}/${url}`);
+  }
 
-    this.app.use(this._handleRequest.bind(this));
-    this.app.use(this._handleCatch.bind(this));
+  /**
+   * 创建HTTP服务
+   */
+  async createServer(): Promise<void> {
+    if (this.isDestroyed() || this.isReady()) {
+      return;
+    }
+
+    const app: express.Application = express();
+    app.engine('html', require('express-art-template'));
+    app.set('views', resolveRoot('public/template'));
+    app.set('view engine', 'html');
+    app.use(require('serve-favicon')(resolveRoot('public/favicon.ico')));
+    app.use(require('compression')());
+    app.use(this._handleRequest.bind(this));
+    app.use(this._handleCatch.bind(this));
+
     this.port = await getPort(52330);
-    this.app.listen(this.port);
-    return this.port;
+    // TODO
+    this.port = 52330;
+    this.server = http.createServer(app);
+    this.server.listen(this.port);
+
+    return new Promise<void>((resolve, reject) => {
+      const server = this.server as http.Server;
+      server.on('listening', resolve);
+      server.on('error', reject);
+    });
   }
 
   /**
    * 更新workspace
    */
-  update(workspaceFolder: WorkspaceFolder): void {
+  updateWorkspace(workspaceFolder: WorkspaceFolder): void {
     this.workspaceFolder = workspaceFolder;
     this.rootPath = workspaceFolder.uri.fsPath;
   }
@@ -66,34 +87,29 @@ export default class LocalServer {
    * 销毁服务
    */
   destroy(): void {
-    this.app = null;
+    if (this.isDestroyed()) {
+      return;
+    }
+    if (this.server && this.isReady()) {
+      this.server.close();
+    }
+    this.server = null;
     this.port = null;
-    this._isMounted = false;
-    this._isDestroyed = false;
-  }
-
-  isMounted(): boolean {
-    return this._isMounted;
-  }
-
-  isDestroyed(): boolean {
-    return this._isDestroyed;
+    this._isDestroyed = true;
   }
 
   /**
-   * 打开浏览器
-   * @param filename
+   * 服务是否可用
    */
-  async openBrowser(filename: string): Promise<void> {
-    if (!this.isMounted()) {
-      showWarningMessage($t('localServer.noLaunch'));
-      await this.createServer();
-    }
+  isReady(): boolean {
+    return !!this.server && this.server.listening;
+  }
 
-    const relativePath = path.relative(this.rootPath, filename);
-    const url = relativePath.split(path.sep).join('/');
-
-    await openBrowser(`http://localhost:${this.port}/${url}`);
+  /**
+   * 服务是否被销毁
+   */
+  isDestroyed(): boolean {
+    return this._isDestroyed;
   }
 
   private _handleRequest(req: express.Request, res: express.Response, next: express.NextFunction): void {
@@ -122,7 +138,7 @@ export default class LocalServer {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  private _handleCatch(err: CustomError, req: express.Request, res: express.Response, next: express.NextFunction): void {
+  private _handleCatch(err: Error, req: express.Request, res: express.Response, next: express.NextFunction): void {
     if (err) {
       if (err.name === '404') {
         res.status(404);

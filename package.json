@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "rollup --config rollup.config.js --watch",
     "build": "rollup --config rollup.config.js",
-    "test": "npm run build && node ./dist/runTest.js"
+    "test": "node ./dist/runTest.js"
   },
   "publisher": "peakchen90",
   "engines": {

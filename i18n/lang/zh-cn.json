@@ -1,4 +1,5 @@
 {
   "nonHTML.warn": "不能打开非HTML或HTM格式的文件",
-  "localServer.noLaunch": "服务未启动"
+  "localServer.createError": "创建服务失败",
+  "localServer.noMatchWorkspace": "打开浏览器发生异常，请重启VSCODE后重试！"
 }

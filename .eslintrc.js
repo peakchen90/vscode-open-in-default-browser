@@ -20,6 +20,7 @@ module.exports = {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-console": "off",
+    "lines-between-class-members": "off",
     "no-empty": ["error", {
       "allowEmptyCatch": true
     }],
