@@ -34,10 +34,6 @@ export default class Manage {
     const server = new LocalServer(workspaceFolder);
     const data = {workspaceFolder, dirname, server};
     this.map.set(dirname, data);
-
-    if (findMap(this.map, (item) => getRelativePath(dirname, item.dirname) != null)) {
-      server.createServer();
-    }
     return data;
   }
 
