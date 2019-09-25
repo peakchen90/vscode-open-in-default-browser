@@ -4,5 +4,8 @@
   "run.nonHTMLFile": "No se pueden abrir archivos que no sean HTM o HTML",
   "run.localServer.createError": "Crear servicio fallido",
   "run.localServer.noMatchWorkspace": "Se produjo un error al abrir el navegador. ¡Reinicie VSCODE e intente nuevamente!",
-  "run.localServer.unknownException": "Excepción desconocida"
+  "run.localServer.unknownException": "Excepción desconocida",
+  "donation.message": "La extensión es una nueva actualización, y ahora es compatible con el archivo html abierto con el servidor http local. Si esto te hace más conveniente, puedes invitarme a tomar una taza de café. ❤️",
+  "donation.okText": "Aprende más",
+  "donation.cancelText": "No, gracias"
 }

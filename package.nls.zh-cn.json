@@ -6,6 +6,6 @@
   "run.localServer.noMatchWorkspace": "打开浏览器发生异常，请重启VSCODE后重试！",
   "run.localServer.unknownException": "未知异常",
   "donation.message": "插件全新升级，现在支持使用本地HTTP服务打开HTML文件，如果这给你带来了方便，你可以选择请我喝杯咖啡 ❤️",
-  "donation.okText": "去看看",
-  "donation.cancelText": "不用了"
+  "donation.okText": "了解一下",
+  "donation.cancelText": "不了"
 }

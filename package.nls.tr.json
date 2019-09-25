@@ -4,5 +4,8 @@
   "run.nonHTMLFile": "HTM olmayan veya HTML olmayan dosyalar açılamıyor",
   "run.localServer.createError": "Hizmet oluşturulamadı",
   "run.localServer.noMatchWorkspace": "Tarayıcı açılırken bir hata oluştu. Lütfen VSCODE'u yeniden başlatın ve tekrar deneyin!",
-  "run.localServer.unknownException": "Bilinmeyen istisna"
+  "run.localServer.unknownException": "Bilinmeyen istisna",
+  "donation.message": "Uzantı yeni bir yükseltmedir ve şimdi yerel http sunucusuyla açık html dosyasını destekler. Bu size daha fazla kolaylık sağlıyorsa, bana bir fincan kahve ısmarlayabilirsiniz. ❤️",
+  "donation.okText": "Daha fazla bilgi edin",
+  "donation.cancelText": "Hayır teşekkürler"
 }

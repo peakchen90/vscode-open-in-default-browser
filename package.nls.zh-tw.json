@@ -4,5 +4,8 @@
   "run.nonHTMLFile": "不能打開非HTML或HTM格式的文​​件",
   "run.localServer.createError": "創建服務失敗",
   "run.localServer.noMatchWorkspace": "打開瀏覽器時發生錯誤，請重新啟動VSCODE，然後重試！",
-  "run.localServer.unknownException": "未知異常"
+  "run.localServer.unknownException": "未知異常",
+  "donation.message": "插件全新升級，現在支持使用本地HTTP服務打開HTML文件，如果這給你帶來了方便，你可以選擇請我喝杯咖啡 ❤️",
+  "donation.okText": "了解一下",
+  "donation.cancelText": "不了"
 }

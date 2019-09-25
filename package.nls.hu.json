@@ -4,5 +4,8 @@
   "run.nonHTMLFile": "Nem lehet nem HTM vagy nem HTML fájlokat megnyitni",
   "run.localServer.createError": "A szolgáltatás létrehozása sikertelen",
   "run.localServer.noMatchWorkspace": "Hiba történt a böngésző megnyitásakor. Indítsa újra a VSCODE szoftvert, és próbálja újra!",
-  "run.localServer.unknownException": "Ismeretlen kivétel"
+  "run.localServer.unknownException": "Ismeretlen kivétel",
+  "donation.message": "A kiterjesztés egy új frissítés, és most támogatja a nyitott html fájlt a helyi http szerverrel. Ha ez még kényelmesebbé teszi, kezelheti nekem egy csésze kávét. ❤️",
+  "donation.okText": "Tudj meg többet",
+  "donation.cancelText": "Nem köszönöm"
 }
