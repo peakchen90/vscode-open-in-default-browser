@@ -19,7 +19,7 @@ async function requestFeedback(isOK: boolean) {
   }
 }
 
-function showDonationInfo() {
+function showDonationMessage() {
   const okText = $t('donation.okText');
   const cancelText = $t('donation.cancelText');
   vscode.window.showInformationMessage($t('donation.message'), okText, cancelText).then((press) => {
@@ -44,13 +44,14 @@ async function requestDonation() {
     if (data.donationEnabled && data.donationUrl) {
       tradeId = data.tradeId;
       donationUrl = data.donationUrl;
-      timestamp = Date.now();
       let donationDelay = Number(data.donationDelay);
       if (Number.isNaN(donationDelay) || donationDelay < 0) {
-        donationDelay = 5;
+        donationDelay = 0;
       }
+
       setTimeout(() => {
-        showDonationInfo();
+        timestamp = Date.now();
+        showDonationMessage();
       }, donationDelay * 1000);
     }
   } catch (e) {
