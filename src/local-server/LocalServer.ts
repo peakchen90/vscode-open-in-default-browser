@@ -13,6 +13,7 @@ import {
 } from '../utils/utils';
 
 export default class LocalServer {
+  private static nextPort: number = 52330;
   private server: http.Server | null;
   private workspaceFolder: WorkspaceFolder;
   private rootPath: string;
@@ -66,7 +67,7 @@ export default class LocalServer {
     app.use(this._handleRequest.bind(this));
     app.use(this._handleCatch.bind(this));
 
-    this.port = await getPort(52330);
+    this.port = await getPort(LocalServer.nextPort++);
     this.server = http.createServer(app);
     this.server.listen(this.port);
 
