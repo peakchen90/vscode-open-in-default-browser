@@ -1,4 +1,3 @@
-import * as path from 'path';
 import {runTests} from 'vscode-test';
 import {resolveRoot} from '../src/utils/utils';
 
@@ -21,7 +20,8 @@ async function main() {
       extensionDevelopmentPath,
       extensionTestsPath: '',
       launchArgs: [
-        testWorkspace
+        testWorkspace,
+        '--disable-extensions'
       ]
     });
   } catch (err) {

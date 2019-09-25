@@ -36,3 +36,12 @@ export function showWarningMessage(message: string): void {
 export function showErrorMessage(message: string): void {
   vscode.window.showErrorMessage(message);
 }
+
+/**
+ * 获取workspace配置
+ * @param section
+ */
+export function getConfiguration(section: string) {
+  const conf = vscode.workspace.getConfiguration();
+  return conf.get(section);
+}

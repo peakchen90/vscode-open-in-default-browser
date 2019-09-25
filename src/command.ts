@@ -1,9 +1,10 @@
 import * as vscode from 'vscode';
 import collect from './service/collect';
-import {showWarningMessage} from './utils/vscode';
+import {getConfiguration, showWarningMessage} from './utils/vscode';
 import {openBrowser} from './utils/utils';
 import $t from '../i18n/lang-helper';
 import {openBrowserByServer} from './local-server';
+import {CONFIGURATION} from './config';
 
 /**
  * 注册 openInBrowser 命令
@@ -27,17 +28,21 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
     }
 
     let success = false;
+    const useHttpServer = getConfiguration(CONFIGURATION.OPEN_WITH_HTTP_SERVER);
     if (/^x?html?$/i.test(languageId)) {
-      // openBrowser(filename);
-      openBrowserByServer(filename);
+      if (useHttpServer) {
+        openBrowserByServer(filename);
+      } else {
+        openBrowser(filename);
+      }
+
       success = true;
     } else {
       showWarningMessage($t('nonHTML.warn'));
     }
 
-    // send collect info
     const type = evt ? 'context_menu' : 'shortcut_key';
-    collect(type, {success});
+    collect(type, {success, useHttpServer});
   });
 
   context.subscriptions.push(disposable);

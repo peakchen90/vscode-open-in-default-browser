@@ -55,7 +55,17 @@
         "mac": "cmd+1",
         "when": "resourceLangId == html && editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Open In Default Browser",
+      "properties": {
+        "openInDefaultBrowser.run.openWithLocalHttpServer": {
+          "type": "boolean",
+          "default": true,
+          "description": "%openInBrowser.openWithLocalHttpServer%"
+        }
+      }
+    }
   },
   "repository": {
     "type": "git",
