@@ -1,0 +1,11 @@
+{
+  "openInBrowser.title": "Отворете в браузъра по подразбиране",
+  "openInBrowser.openWithLocalHttpServer": "Отваряне с локален http сървър",
+  "run.nonHTMLFile": "Невъзможно е да се отворят не-HTM или не-HTML файлове",
+  "run.localServer.createError": "Създаването на услугата не бе успешно",
+  "run.localServer.noMatchWorkspace": "Възникна грешка при отварянето на браузъра. Моля, рестартирайте VSCODE и опитайте отново!",
+  "run.localServer.unknownException": "Неизвестно изключение",
+  "donation.message": "Разширението е ново надграждане и вече поддържа отворения html файл с локален http сървър. Ако това ви прави по-голямо удобство, можете да ме почерпите с чаша кафе. ❤️",
+  "donation.okText": "Научете повече",
+  "donation.cancelText": "Не благодаря"
+}
