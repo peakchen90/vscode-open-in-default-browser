@@ -1,4 +1,8 @@
 {
   "openInBrowser.title": "在浏览器中打开",
-  "openInBrowser.openWithLocalHttpServer": "使用本地HTTP服务打开"
+  "openInBrowser.openWithLocalHttpServer": "使用本地HTTP服务打开",
+  "run.nonHTMLFile": "不能打开非HTML或HTM格式的文件",
+  "run.localServer.createError": "创建服务失败",
+  "run.localServer.noMatchWorkspace": "打开浏览器发生异常，请重启VSCODE后重试！",
+  "run.localServer.unknownException": "未知异常"
 }

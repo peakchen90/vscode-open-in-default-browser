@@ -1,4 +1,8 @@
 {
   "openInBrowser.title": "ブラウザで開く",
-  "openInBrowser.openWithLocalHttpServer": "ローカルHTTPサーバーで開く"
+  "openInBrowser.openWithLocalHttpServer": "ローカルHTTPサーバーで開く",
+  "run.nonHTMLFile": "非HTMLまたはHTM形式のファイルを開けない",
+  "run.localServer.createError": "サービスの作成に失敗しました",
+  "run.localServer.noMatchWorkspace": "ブラウザを開くときにエラーが発生しました。 VSCODEを再起動してもう一度お試しください！",
+  "run.localServer.unknownException": "不明な例外"
 }

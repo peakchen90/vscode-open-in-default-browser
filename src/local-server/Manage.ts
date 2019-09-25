@@ -108,7 +108,7 @@ export default class Manage {
   async openBrowser(filename: string): Promise<boolean> {
     const workspaceData = this.getByFilename(filename);
     if (!workspaceData) {
-      showErrorMessage($t('localServer.noMatchWorkspace'));
+      showErrorMessage($t('run.localServer.noMatchWorkspace'));
       return false;
     }
 

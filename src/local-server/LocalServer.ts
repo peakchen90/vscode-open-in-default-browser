@@ -35,7 +35,7 @@ export default class LocalServer {
     }
     if (!this.isReady()) {
       await this.createServer().catch((err: Error) => {
-        showErrorMessage(`${$t('localServer.createError')} ${err.message}`);
+        showErrorMessage(`${$t('run.localServer.createError')} ${err.message}`);
         throw err;
       });
     }

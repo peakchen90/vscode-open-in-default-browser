@@ -38,7 +38,7 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
 
       success = true;
     } else {
-      showWarningMessage($t('nonHTML.warn'));
+      showWarningMessage($t('run.nonHTMLFile'));
     }
 
     const type = evt ? 'context_menu' : 'shortcut_key';
