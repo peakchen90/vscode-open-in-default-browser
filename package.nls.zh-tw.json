@@ -1,3 +1,4 @@
 {
-  "extension.openInBrowser.title": "在瀏覽器中打開"
+  "openInBrowser.title": "在瀏覽器中打開",
+  "openInBrowser.openWithLocalHttpServer": "使用本地HTTP服務打開"
 }

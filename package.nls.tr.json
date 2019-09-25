@@ -1,3 +1,4 @@
 {
-  "extension.openInBrowser.title": "Tarayıcıda aç"
+  "openInBrowser.title": "Tarayıcıda aç",
+  "openInBrowser.openWithLocalHttpServer": "Yerel http sunucusuyla aç"
 }

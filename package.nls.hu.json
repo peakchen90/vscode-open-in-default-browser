@@ -1,3 +1,4 @@
 {
-  "extension.openInBrowser.title": "Nyissa meg az Alapértelmezett böngészőben"
+  "openInBrowser.title": "Nyissa meg az Alapértelmezett böngészőben",
+  "openInBrowser.openWithLocalHttpServer": "Nyissa meg a helyi http-kiszolgálón"
 }

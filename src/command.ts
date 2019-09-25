@@ -4,13 +4,13 @@ import {getConfiguration, showWarningMessage} from './utils/vscode';
 import {openBrowser} from './utils/utils';
 import $t from '../i18n/lang-helper';
 import {openBrowserByServer} from './local-server';
-import {CONFIGURATION} from './config';
+import {COMMAND, CONFIGURATION} from './config';
 
 /**
  * 注册 openInBrowser 命令
  */
 export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): void {
-  const disposable: vscode.Disposable = vscode.commands.registerCommand('peakchen90.openInBrowser', (evt) => {
+  const disposable: vscode.Disposable = vscode.commands.registerCommand(COMMAND.OPEN_IN_BROWSER, (evt) => {
     let filename = '';
     let languageId = '';
 

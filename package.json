@@ -16,7 +16,7 @@
   "license": "MIT",
   "icon": "public/icon.jpg",
   "activationEvents": [
-    "onCommand:peakchen90.openInBrowser"
+    "onCommand:openInBrowser.openInDefaultBrowser"
   ],
   "categories": [
     "Other"
@@ -24,33 +24,29 @@
   "contributes": {
     "commands": [
       {
-        "command": "peakchen90.openInBrowser",
-        "title": "%extension.openInBrowser.title%"
-      },
-      {
-        "command": "peakchen90.helloWorld",
-        "title": "hello world"
+        "command": "openInBrowser.openInDefaultBrowser",
+        "title": "%openInBrowser.title%"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "when": "editorLangId == html",
-          "command": "peakchen90.openInBrowser",
+          "command": "openInBrowser.openInDefaultBrowser",
           "group": "1_modification"
         }
       ],
       "explorer/context": [
         {
           "when": "resourceLangId == html",
-          "command": "peakchen90.openInBrowser",
+          "command": "openInBrowser.openInDefaultBrowser",
           "group": "1_modification"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "peakchen90.openInBrowser",
+        "command": "openInBrowser.openInDefaultBrowser",
         "key": "ctrl+1",
         "mac": "cmd+1",
         "when": "resourceLangId == html && editorTextFocus"

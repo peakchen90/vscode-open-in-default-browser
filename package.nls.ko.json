@@ -1,3 +1,4 @@
 {
-  "extension.openInBrowser.title": "브라우저에서 열려"
+  "openInBrowser.title": "브라우저에서 열려",
+  "openInBrowser.openWithLocalHttpServer": "로컬 HTTP 서버로 열기"
 }

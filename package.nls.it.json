@@ -1,3 +1,4 @@
 {
-  "extension.openInBrowser.title": "Apri nel browser"
+  "openInBrowser.title": "Apri nel browser",
+  "openInBrowser.openWithLocalHttpServer": "Apri con il server http locale"
 }
