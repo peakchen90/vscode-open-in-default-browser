@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import collect from './service/collect';
 import {getConfiguration, showWarningMessage} from './utils/vscode';
 import {openBrowser} from './utils/utils';
-import $t from '../i18n/lang-helper';
+import $t from './utils/lang-helper';
 import {openBrowserByServer} from './local-server';
 import {COMMAND, CONFIGURATION} from './config';
 

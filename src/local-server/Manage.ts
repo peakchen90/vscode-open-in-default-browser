@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import {WorkspaceData, WorkspaceFolder, WorkspaceFolders} from './types';
 import LocalServer from './LocalServer';
 import {showErrorMessage} from '../utils/vscode';
-import $t from '../../i18n/lang-helper';
+import $t from '../utils/lang-helper';
 import {getRelativePath} from '../utils/utils';
 
 export default class Manage {
@@ -11,7 +11,7 @@ export default class Manage {
   private readonly cancelListening: () => void;
 
   constructor() {
-    this.map = new Map();
+    this.map = new Map<string, WorkspaceData>();
     this._resolveWorkspaceMap();
     this.cancelListening = this._listenWorkspaceFoldersChange();
   }

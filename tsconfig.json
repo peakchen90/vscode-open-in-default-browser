@@ -14,8 +14,7 @@
   },
   "include": [
     "src",
-    "test",
-    "i18n"
+    "test"
   ],
   "exclude": [
     "node_modules",

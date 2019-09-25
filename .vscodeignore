@@ -5,7 +5,6 @@ dist/__out__/**
 dist/runTest.js
 src/**
 test/**
-i18n/*.md
 .editorconfig
 .gitignore
 .eslintrc.js

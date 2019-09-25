@@ -2,11 +2,15 @@ import * as path from 'path';
 import * as http from 'http';
 import express from 'express';
 import {WorkspaceFolder} from './types';
-import {
-  getIndexFilename, getPort, getStat, openBrowser, resolveRoot
-} from '../utils/utils';
 import {getLocale, showErrorMessage} from '../utils/vscode';
-import $t from '../../i18n/lang-helper';
+import $t from '../utils/lang-helper';
+import {
+  getIndexFilename,
+  getPort,
+  getStat,
+  openBrowser,
+  resolveRoot
+} from '../utils/utils';
 
 export default class LocalServer {
   private server: http.Server | null;
