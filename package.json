@@ -75,7 +75,9 @@
     "html",
     "default",
     "browser",
-    "chrome"
+    "chrome",
+    "http",
+    "local server"
   ],
   "devDependencies": {
     "@types/express": "4.17.1",
