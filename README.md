@@ -30,7 +30,7 @@ A VSCode extension to fast open html file in browser.
 
 ## Settings Options
 
-This extension contributes the following variables to the settings:
+This extension contributes the following variables to the [settings](https://code.visualstudio.com/docs/getstarted/settings):
 
 - `openInDefaultBrowser.run.openWithLocalHttpServer`: (true/false) Whether to open with local http server, default `true`
 
