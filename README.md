@@ -36,6 +36,11 @@ This extension contributes the following variables to the [settings](https://cod
 - `openInDefaultBrowser.run.openWithLocalHttpServer`: (true/false) Whether to open with local http server, default `true`
 
 
+## CHANGELOG
+
+[CHANGELOG](./CHANGELOG.md)
+
+
 ## License
 
 [MIT](./LICENSE)

@@ -1,3 +1,10 @@
+## 2.0.0: 2019/09/26
+- Supports based on local http server to open html file
+- 支持基于本地HTTP服务打开HTML文件
+- More language support, such as Hungarian, Italian, Bulgarian...
+- 更多的语言支持，比如：匈利亚语、意大利语、保加利亚语...
+
+
 ## 1.0.3: 2019/02/09
 - Optimize menu title(en)
 - 优化菜单标题（英语）
@@ -12,8 +19,8 @@
 
 ## 0.0.1: 2017/03/30
 - Open a HTML file in default browser
-- In the Explorer, the HTML file is right-clicking `Open in the browser` menu
-- In the editor, the HTML file is right-clicking `Open in the browser` menu
 - 用默认浏览器打开 HTML 文件
+- In the Explorer, the HTML file is right-clicking `Open in the browser` menu
 - 在资源管理器中，HTML 文件右键显示 `在浏览器中打开` 菜单
+- In the editor, the HTML file is right-clicking `Open in the browser` menu
 - 在编辑器中，HTML 文件右键显示 `在浏览器中打开` 菜单

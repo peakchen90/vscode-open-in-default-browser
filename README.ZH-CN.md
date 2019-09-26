@@ -36,6 +36,11 @@
 - `openInDefaultBrowser.run.openWithLocalHttpServer`: (true/false) 是否使用本地HTTP服务打开，默认`true`
 
 
+## 更新日志
+
+[CHANGELOG](./CHANGELOG.md)
+
+
 ## 许可证
 
 [MIT](./LICENSE)
