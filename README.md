@@ -1,16 +1,17 @@
-# Open In Default Browser
-
+#  Open In Default Browser
 
 A VSCode extension to fast open html file in browser.
+
+> [中文文档](./README.ZH-CN.md)
 
 ![preview](./public/preview.gif)
 
 
 ## Supported features
 
-1. Provide "Open In Default Browser" menu for html files on the explorer and on the editor, it can open this html file with the default browser.
+1. Provide "Open In Default Browser" menu for html files on the explorer and on the editor, it can open this html file with the default browser
 2. You can also use the shortcut `ctrl + 1` (Windows) / `command + 1` (Mac)
-3. It uses a local http server to open html file
+3. It based on a Local HTTP Server
 4. Support multi-languauge: 
    - English (en)
    - Simplified Chinese (zh-cn)
