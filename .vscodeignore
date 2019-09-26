@@ -5,11 +5,11 @@ dist/__out__/**
 dist/runTest.js
 src/**
 test/**
-.editorconfig
-.gitignore
-.eslintrc.js
-.eslintignore
-rollup.config.js
+**/.editorconfig
+**/.gitignore
+**/.eslintrc.js
+**/.eslintignore
+**/rollup.config.js
 **/tsconfig.json
 **/*.map
 **/*.ts

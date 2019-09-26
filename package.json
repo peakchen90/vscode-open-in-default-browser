@@ -2,7 +2,7 @@
   "name": "open-html-in-browser",
   "displayName": "Open In Default Browser",
   "description": "Open In Default Browser",
-  "version": "2.0.0-alpha",
+  "version": "2.0.1",
   "main": "./dist/extension.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js --watch",
