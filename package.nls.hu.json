@@ -1,6 +1,6 @@
 {
-  "openInBrowser.title": "Nyissa meg az Alapértelmezett böngészőben",
-  "openInBrowser.openWithLocalHttpServer": "Nyissa meg a helyi http-kiszolgálón",
+  "openInDefaultBrowser.title": "Nyissa meg az Alapértelmezett böngészőben",
+  "openInDefaultBrowser.openWithLocalHttpServer": "Nyissa meg a helyi http-kiszolgálón",
   "run.nonHTMLFile": "Nem lehet nem HTM vagy nem HTML fájlokat megnyitni",
   "run.localServer.createError": "A szolgáltatás létrehozása sikertelen",
   "run.localServer.noMatchWorkspace": "Hiba történt a böngésző megnyitásakor. Indítsa újra a VSCODE szoftvert, és próbálja újra!",

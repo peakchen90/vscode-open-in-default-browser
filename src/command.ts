@@ -7,7 +7,7 @@ import {openBrowserByServer} from './local-server';
 import {COMMAND, CONFIGURATION} from './config';
 
 /**
- * 注册 openInBrowser 命令
+ * 注册 openInDefaultBrowser 命令
  */
 export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): void {
   const disposable: vscode.Disposable = vscode.commands.registerCommand(COMMAND.OPEN_IN_BROWSER, (evt) => {

@@ -16,7 +16,7 @@
   "license": "MIT",
   "icon": "public/icon.jpg",
   "activationEvents": [
-    "onCommand:openInBrowser.openInDefaultBrowser"
+    "onCommand:openInDefaultBrowser.openInDefaultBrowser"
   ],
   "categories": [
     "Other"
@@ -24,29 +24,29 @@
   "contributes": {
     "commands": [
       {
-        "command": "openInBrowser.openInDefaultBrowser",
-        "title": "%openInBrowser.title%"
+        "command": "openInDefaultBrowser.openInDefaultBrowser",
+        "title": "%openInDefaultBrowser.title%"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "when": "editorLangId == html",
-          "command": "openInBrowser.openInDefaultBrowser",
+          "command": "openInDefaultBrowser.openInDefaultBrowser",
           "group": "1_modification"
         }
       ],
       "explorer/context": [
         {
           "when": "resourceLangId == html",
-          "command": "openInBrowser.openInDefaultBrowser",
+          "command": "openInDefaultBrowser.openInDefaultBrowser",
           "group": "1_modification"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "openInBrowser.openInDefaultBrowser",
+        "command": "openInDefaultBrowser.openInDefaultBrowser",
         "key": "ctrl+1",
         "mac": "cmd+1",
         "when": "resourceLangId == html && editorTextFocus"
@@ -58,7 +58,7 @@
         "openInDefaultBrowser.run.openWithLocalHttpServer": {
           "type": "boolean",
           "default": true,
-          "description": "%openInBrowser.openWithLocalHttpServer%"
+          "description": "%openInDefaultBrowser.openWithLocalHttpServer%"
         }
       }
     }

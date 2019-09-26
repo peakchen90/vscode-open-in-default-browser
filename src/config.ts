@@ -3,7 +3,7 @@ export const HTTP_HOST = 'https://service.peakchen.cn';
 
 // commands
 export const COMMAND = {
-  OPEN_IN_BROWSER: 'openInBrowser.openInDefaultBrowser'
+  OPEN_IN_BROWSER: 'openInDefaultBrowser.openInDefaultBrowser'
 };
 
 // 配置section

@@ -1,6 +1,6 @@
 {
-  "openInBrowser.title": "브라우저에서 열려",
-  "openInBrowser.openWithLocalHttpServer": "로컬 HTTP 서버로 열기",
+  "openInDefaultBrowser.title": "브라우저에서 열려",
+  "openInDefaultBrowser.openWithLocalHttpServer": "로컬 HTTP 서버로 열기",
   "run.nonHTMLFile": "HTM이 아닌 파일 또는 HTML이 아닌 파일을 열 수 없습니다.",
   "run.localServer.createError": "서비스 생성 실패",
   "run.localServer.noMatchWorkspace": "브라우저를 여는 중에 오류가 발생했습니다. VSCODE를 다시 시작한 후 다시 시도하십시오!",

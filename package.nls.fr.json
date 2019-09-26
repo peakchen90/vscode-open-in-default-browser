@@ -1,6 +1,6 @@
 {
-  "openInBrowser.title": "Ouvrir dans le navigateur",
-  "openInBrowser.openWithLocalHttpServer": "Ouvrir avec un serveur http local",
+  "openInDefaultBrowser.title": "Ouvrir dans le navigateur",
+  "openInDefaultBrowser.openWithLocalHttpServer": "Ouvrir avec un serveur http local",
   "run.nonHTMLFile": "Impossible d'ouvrir des fichiers non-HTM ou non-HTML",
   "run.localServer.createError": "La création du service a échoué",
   "run.localServer.noMatchWorkspace": "Une erreur s'est produite lors de l'ouverture du navigateur. Veuillez redémarrer VSCODE et réessayer!",
