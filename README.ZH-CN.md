@@ -1,5 +1,19 @@
 # Open In Default Browser
 
+<a href="https://marketplace.visualstudio.com/items?itemName=peakchen90.open-html-in-browser">
+  <img src="https://vsmarketplacebadge.apphb.com/version-short/peakchen90.open-html-in-browser.svg">
+</a>
+<a href="https://marketplace.visualstudio.com/items?itemName=peakchen90.open-html-in-browser">
+  <img src="https://vsmarketplacebadge.apphb.com/installs-short/peakchen90.open-html-in-browser.svg
+">
+</a>
+<a href="https://marketplace.visualstudio.com/items?itemName=peakchen90.open-html-in-browser">
+  <img src="https://vsmarketplacebadge.apphb.com/downloads-short/peakchen90.open-html-in-browser.svg">
+</a>
+<a href="https://marketplace.visualstudio.com/items?itemName=peakchen90.open-html-in-browser#review-details">
+  <img src="https://vsmarketplacebadge.apphb.com/rating-short/peakchen90.open-html-in-browser.svg">
+</a>
+
 一个可以快速打开HTML文件的VSCode插件
 
 > [English document](./README.md)
@@ -10,7 +24,7 @@
 ## 功能
 
 1. 在资源管理器和编辑器里的HTML文件提供“在浏览器中打开”菜单，它可以使用默认浏览器打开此HTML文件
-2. 你也可以使用快捷键`ctrl + 1` (Windows) / `command + 1` (Mac) 
+2. 你也可以使用快捷键`ctrl + 1` (Windows) / `command + 1` (Mac)
 3. 基于一个本地HTTP服务器来打开HTML文件
 4. 支持多语言：
    - 英语 (en)
