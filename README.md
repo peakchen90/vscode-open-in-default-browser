@@ -4,8 +4,7 @@
   <img src="https://vsmarketplacebadge.apphb.com/version-short/peakchen90.open-html-in-browser.svg">
 </a>
 <a href="https://marketplace.visualstudio.com/items?itemName=peakchen90.open-html-in-browser">
-  <img src="https://vsmarketplacebadge.apphb.com/installs-short/peakchen90.open-html-in-browser.svg
-">
+  <img src="https://vsmarketplacebadge.apphb.com/installs-short/peakchen90.open-html-in-browser.svg">
 </a>
 <a href="https://marketplace.visualstudio.com/items?itemName=peakchen90.open-html-in-browser">
   <img src="https://vsmarketplacebadge.apphb.com/downloads-short/peakchen90.open-html-in-browser.svg">
