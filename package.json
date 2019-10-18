@@ -31,14 +31,14 @@
     "menus": {
       "editor/context": [
         {
-          "when": "editorLangId == html",
+          "when": "resourceLangId == html || resourceLangId == xml || resourceExtname == .pdf",
           "command": "openInDefaultBrowser.openInDefaultBrowser",
           "group": "1_modification"
         }
       ],
       "explorer/context": [
         {
-          "when": "resourceLangId == html",
+          "when": "resourceLangId == html || resourceLangId == xml || resourceExtname == .pdf",
           "command": "openInDefaultBrowser.openInDefaultBrowser",
           "group": "1_modification"
         }
@@ -46,10 +46,10 @@
     },
     "keybindings": [
       {
+        "when": "resourceLangId == html || resourceLangId == xml || resourceExtname == .pdf",
         "command": "openInDefaultBrowser.openInDefaultBrowser",
         "key": "ctrl+1",
-        "mac": "cmd+1",
-        "when": "resourceLangId == html && editorTextFocus"
+        "mac": "cmd+1"
       }
     ],
     "configuration": {

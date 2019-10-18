@@ -1,8 +1,7 @@
 import * as vscode from 'vscode';
 import collect from './service/collect';
-import {getConfiguration, showWarningMessage} from './utils/vscode';
+import {getConfiguration} from './utils/vscode';
 import {openBrowser} from './utils/utils';
-import $t from './utils/lang-helper';
 import {openBrowserByServer} from './local-server';
 import {COMMAND, CONFIGURATION} from './config';
 
@@ -27,22 +26,15 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
       filename = document.fileName;
     }
 
-    let success = false;
     const useHttpServer = getConfiguration(CONFIGURATION.OPEN_WITH_HTTP_SERVER);
-    if (/^x?html?$/i.test(languageId)) {
-      if (useHttpServer) {
-        openBrowserByServer(filename);
-      } else {
-        openBrowser(filename);
-      }
-
-      success = true;
+    if (useHttpServer) {
+      openBrowserByServer(filename);
     } else {
-      showWarningMessage($t('run.nonHTMLFile'));
+      openBrowser(filename);
     }
 
     const type = evt ? 'context_menu' : 'shortcut_key';
-    collect(type, {success, useHttpServer});
+    collect(type, {languageId, useHttpServer});
   });
 
   context.subscriptions.push(disposable);
