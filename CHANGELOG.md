@@ -1,3 +1,9 @@
+## 2.1.0: 2019/10/18
+- Added supports xml、pdf files
+- 新增支持xml、pdf文件
+- Supports touchBar (for Mac)
+- 支持touchBar (Mac)
+
 ## 2.0.0: 2019/09/26
 - Supports based on local http server to open html file
 - 支持基于本地HTTP服务打开HTML文件
