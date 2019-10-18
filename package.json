@@ -42,6 +42,12 @@
           "command": "openInDefaultBrowser.openInDefaultBrowser",
           "group": "1_modification"
         }
+      ],
+      "touchBar": [
+        {
+          "when": "resourceLangId == html || resourceLangId == xml || resourceExtname == .pdf",
+          "command": "openInDefaultBrowser.openInDefaultBrowser"
+        }
       ]
     },
     "keybindings": [
