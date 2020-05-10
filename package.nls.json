@@ -4,8 +4,5 @@
   "run.nonHTMLFile": "Unable to open non-HTM or non-HTML files",
   "run.localServer.createError": "Create service failed",
   "run.localServer.noMatchWorkspace": "An error occurred opening the browser. Please restart VSCODE and try again!",
-  "run.localServer.unknownException": "Unknown exception",
-  "donation.message": "The extension is a new upgrade, and now supports the open html file with local http server. If this makes you more convenience, you can treat me have a cup of coffee. ❤️",
-  "donation.okText": "Learn more",
-  "donation.cancelText": "No thanks"
+  "run.localServer.unknownException": "Unknown exception"
 }

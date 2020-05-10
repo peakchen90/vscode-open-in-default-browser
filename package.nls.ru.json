@@ -4,8 +4,5 @@
   "run.nonHTMLFile": "Невозможно открыть файлы не-HTM или не-HTML",
   "run.localServer.createError": "Не удалось создать сервис",
   "run.localServer.noMatchWorkspace": "Произошла ошибка при открытии браузера. Пожалуйста, перезапустите VSCODE и попробуйте снова!",
-  "run.localServer.unknownException": "Неизвестное исключение",
-  "donation.message": "Расширение является новым обновлением и теперь поддерживает открытый HTML-файл с локальным http-сервером. Если это делает вас более удобным, вы можете угостить меня чашкой кофе. ❤️",
-  "donation.okText": "Учить больше",
-  "donation.cancelText": "нет"
+  "run.localServer.unknownException": "Неизвестное исключение"
 }

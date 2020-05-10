@@ -4,8 +4,5 @@
   "run.nonHTMLFile": "HTM이 아닌 파일 또는 HTML이 아닌 파일을 열 수 없습니다.",
   "run.localServer.createError": "서비스 생성 실패",
   "run.localServer.noMatchWorkspace": "브라우저를 여는 중에 오류가 발생했습니다. VSCODE를 다시 시작한 후 다시 시도하십시오!",
-  "run.localServer.unknownException": "알 수없는 예외",
-  "donation.message": "확장은 새로운 업그레이드이며 이제 로컬 http 서버에서 열린 html 파일을 지원합니다. 이것이 더 편리 해지면 커피 한 잔 마시 게 해주세요. ❤️",
-  "donation.okText": "더 알아보기",
-  "donation.cancelText": "아니"
+  "run.localServer.unknownException": "알 수없는 예외"
 }

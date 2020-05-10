@@ -1,9 +1,7 @@
 import * as vscode from 'vscode';
-import {WorkspaceData, WorkspaceFolder, WorkspaceFolders} from './types';
+import { WorkspaceData, WorkspaceFolder, WorkspaceFolders } from './types';
 import LocalServer from './LocalServer';
-import {showErrorMessage} from '../utils/vscode';
-import $t from '../utils/lang-helper';
-import {getRelativePath} from '../utils/utils';
+import { getRelativePath, openBrowser } from '../utils/utils';
 
 export default class Manage {
   private workspaceFolders: WorkspaceFolders | undefined;
@@ -31,7 +29,7 @@ export default class Manage {
     }
 
     const server = new LocalServer(workspaceFolder);
-    const data = {workspaceFolder, dirname, server};
+    const data = { workspaceFolder, dirname, server };
     this.map.set(dirname, data);
     return data;
   }
@@ -108,8 +106,8 @@ export default class Manage {
   async openBrowser(filename: string): Promise<boolean> {
     const workspaceData = this.getByFilename(filename);
     if (!workspaceData) {
-      showErrorMessage($t('run.localServer.noMatchWorkspace'));
-      return false;
+      await openBrowser(filename);
+      return true;
     }
 
     await workspaceData.server.openBrowser(filename);
