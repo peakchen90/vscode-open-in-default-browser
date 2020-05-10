@@ -1,3 +1,7 @@
+## 2.1.3: 2020/05/10
+- Fix: Unable to open temporary files
+- 修复不能打开临时文件的问题
+
 ## 2.1.0: 2019/10/18
 - Added supports xml、pdf files
 - 新增支持xml、pdf文件
