@@ -3,6 +3,7 @@
 .vscode-test/**
 dist/__out__/**
 dist/runTest.js
+package-lock.json
 src/**
 test/**
 **/.editorconfig

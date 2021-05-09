@@ -1,8 +1,9 @@
 import * as path from 'path';
 import * as http from 'http';
+import * as os from 'os';
 import express from 'express';
-import {WorkspaceFolder} from './types';
-import {getLocale, showErrorMessage} from '../utils/vscode';
+import { WorkspaceFolder } from './types';
+import { getLocale, showErrorMessage } from '../utils/vscode';
 import $t from '../utils/lang-helper';
 import {
   getIndexFilename,
@@ -11,6 +12,8 @@ import {
   openBrowser,
   resolveRoot
 } from '../utils/utils';
+
+const isWin32 = os.platform() === 'win32';
 
 export default class LocalServer {
   private static nextPort: number = 52330;
@@ -117,20 +120,37 @@ export default class LocalServer {
 
   private _handleRequest(req: express.Request, res: express.Response, next: express.NextFunction): void {
     const relativePath = decodeURIComponent(req.url).replace(/^\//, '');
+
     const filename = path.resolve(this.rootPath, relativePath);
+
+    const relative = path.posix.relative(this.rootPath, filename);
+    if (
+      (!isWin32 && /^\.\.\//.test(relative))
+      || (isWin32 && /^\.\.\\/.test(relative))
+    ) {
+      const error = new Error('403: No access to files outside the workspace');
+      error.stack = '';
+      error.name = '403';
+      next(error);
+      return;
+    }
+
+
     getStat(filename).then((stats) => {
       if (stats.isDirectory()) {
         getIndexFilename(filename).then((indexFile) => {
           res.sendFile(indexFile);
         }).catch(() => {
-          const error = new Error('404 Not Found');
+          const error = new Error(`File not found: ${filename}`);
+          error.stack = '';
           error.name = '404';
           next(error);
         });
       } else if (!stats.isFile()) {
-        const err = new Error('404 Not Found');
-        err.name = '404';
-        next(err);
+        const error = new Error(`File not found: ${filename}`);
+        error.stack = '';
+        error.name = '404';
+        next(error);
       } else {
         res.sendFile(filename);
       }
@@ -145,6 +165,8 @@ export default class LocalServer {
     if (err) {
       if (err.name === '404') {
         res.status(404);
+      } else if (err.name === '403') {
+        res.status(403);
       } else {
         res.status(500);
       }
