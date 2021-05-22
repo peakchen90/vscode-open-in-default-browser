@@ -8,7 +8,6 @@ import * as fs from 'fs';
 import {getLocale} from './vscode';
 import {parseJSONFile, resolveRoot} from './utils';
 
-
 type LocaleConfig = Record<string, string>
 
 let langData: Map<string, LocaleConfig> | null = null;

@@ -3,4 +3,4 @@
 .idea
 node_modules
 dist
-test/workspace
+test/test-workspace

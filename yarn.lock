@@ -141,10 +141,10 @@
     "@types/mime" "^1"
     "@types/node" "*"
 
-"@types/vscode@^1.56.0":
-  version "1.56.0"
-  resolved "https://registry.nlark.com/@types/vscode/download/@types/vscode-1.56.0.tgz#2a75ee6d66e529295648b0b6ee43824564ed9c1a"
-  integrity sha1-KnXubWblKSlWSLC27kOCRWTtnBo=
+"@types/vscode@1.38.0":
+  version "1.38.0"
+  resolved "https://registry.nlark.com/@types/vscode/download/@types/vscode-1.38.0.tgz#1e53953406ef662354e2e62451c3c71c9ff19a6d"
+  integrity sha1-HlOVNAbvZiNU4uYkUcPHHJ/xmm0=
 
 "@typescript-eslint/eslint-plugin@^4.24.0":
   version "4.24.0"

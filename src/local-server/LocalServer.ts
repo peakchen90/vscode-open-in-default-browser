@@ -135,7 +135,6 @@ export default class LocalServer {
       return;
     }
 
-
     getStat(filename).then((stats) => {
       if (stats.isDirectory()) {
         getIndexFilename(filename).then((indexFile) => {
