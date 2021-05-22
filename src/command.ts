@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import {getConfiguration} from './utils/vscode';
-import {openBrowser} from './utils/utils';
 import {openBrowserByServer} from './local-server';
 import {COMMAND, CONFIGURATION} from './config';
+import {openFileByTransitServer} from './utils/TransitServer';
 
 /**
  * 注册 openInDefaultBrowser 命令
@@ -26,7 +26,7 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
     if (useHttpServer) {
       openBrowserByServer(filename);
     } else {
-      openBrowser(filename);
+      openFileByTransitServer(filename);
     }
   });
 

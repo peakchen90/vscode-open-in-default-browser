@@ -93,7 +93,11 @@ export default class Manage {
   destroy() {
     this.workspaceFolders = undefined;
     this.map.forEach((item) => {
-      item.server.destroy();
+      try {
+        item.server.destroy();
+      } catch (e) {
+        // ignore
+      }
     });
     this.map.clear();
     this.cancelListening();

@@ -2,8 +2,8 @@ import * as path from 'path';
 import * as http from 'http';
 import * as os from 'os';
 import express from 'express';
-import { WorkspaceFolder } from './types';
-import { getLocale, showErrorMessage } from '../utils/vscode';
+import {WorkspaceFolder} from './types';
+import {getLocale, showErrorMessage} from '../utils/vscode';
 import $t from '../utils/lang-helper';
 import {
   getIndexFilename,
@@ -16,7 +16,7 @@ import {
 const isWin32 = os.platform() === 'win32';
 
 export default class LocalServer {
-  private static nextPort: number = 52330;
+  static nextPort: number = 52330;
   private server: http.Server | null;
   private workspaceFolder: WorkspaceFolder;
   private rootPath: string;
