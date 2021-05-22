@@ -86,32 +86,29 @@
     "local server"
   ],
   "devDependencies": {
-    "@types/express": "4.17.1",
-    "@types/node": "^10.14.18",
-    "@types/vscode": "^1.38.0",
-    "@typescript-eslint/eslint-plugin": "^2.3.0",
-    "@typescript-eslint/parser": "^2.3.0",
-    "builtin-modules": "^3.1.0",
-    "eslint": "^6.4.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "rollup": "^1.21.4",
+    "@types/express": "^4.17.11",
+    "@types/node": "^15.6.0",
+    "@types/vscode": "^1.56.0",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "builtin-modules": "^3.2.0",
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.3",
+    "rollup": "^2.48.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-typescript": "^1.0.1",
-    "typescript": "^3.6.3",
-    "vscode-test": "^1.2.0"
+    "typescript": "^4.2.4",
+    "vscode-test": "^1.5.2"
   },
   "dependencies": {
-    "art-template": "4.13.2",
-    "axios": "0.19.0",
-    "compression": "1.7.4",
-    "express": "4.17.1",
-    "express-art-template": "1.0.1",
-    "getmac": "1.4.6",
-    "getport": "0.1.0",
-    "open": "6.4.0",
-    "serve-favicon": "2.5.0",
-    "tslib": "1.10.0"
+    "art-template": "^4.13.2",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "express-art-template": "^1.0.1",
+    "getport": "^0.1.0",
+    "open": "^8.0.9",
+    "serve-favicon": "^2.5.0"
   }
 }
