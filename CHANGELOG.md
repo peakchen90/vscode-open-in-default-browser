@@ -1,3 +1,11 @@
+## 2.1.5: 2020/05/22
+- chore: Some performance optimizations
+- 一些性能优化
+
+## 2.1.4: 2021/05/09
+- Fix: Security problem when using local http server
+- 修复开启本地服务时存在安全的漏洞
+
 ## 2.1.3: 2020/05/10
 - Fix: Unable to open temporary files
 - 修复不能打开临时文件的问题
