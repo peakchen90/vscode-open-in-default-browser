@@ -1,4 +1,8 @@
-## 2.1.5: 2020/05/22
+## 2.1.6: 2021/05/22
+- Fix: command not found
+- 修复命令找不到的问题
+
+## 2.1.5: 2021/05/22
 - chore: Some performance optimizations
 - 一些性能优化
 
