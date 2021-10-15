@@ -50,6 +50,11 @@
 - `openInDefaultBrowser.run.openWithLocalHttpServer`: (true/false) 是否使用本地HTTP服务打开，默认`true`
 
 
+## 视频教程
+
+- [https://www.webucator.com/article/how-to-open-html-files-in-google-chrome-from-visua/](https://www.webucator.com/article/how-to-open-html-files-in-google-chrome-from-visua/)
+
+
 ## 更新日志
 
 [CHANGELOG](./CHANGELOG.md)

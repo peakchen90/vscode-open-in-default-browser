@@ -50,6 +50,11 @@ This extension contributes the following variables to the [settings](https://cod
 - `openInDefaultBrowser.run.openWithLocalHttpServer`: (true/false) Whether to open with local http server, default `true`
 
 
+## Tutorial Video
+
+- [https://www.webucator.com/article/how-to-open-html-files-in-google-chrome-from-visua/](https://www.webucator.com/article/how-to-open-html-files-in-google-chrome-from-visua/)
+
+
 ## CHANGELOG
 
 [CHANGELOG](./CHANGELOG.md)
