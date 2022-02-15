@@ -1,3 +1,6 @@
+## 2.1.9: 2022/02/15
+- Fix: [#28](https://github.com/peakchen90/vscode-open-in-default-browser/issues/28)
+
 ## 2.1.6: 2021/05/22
 - Fix: command not found
 - 修复命令找不到的问题
