@@ -8,7 +8,8 @@
     "dev": "rollup --config rollup.config.js --watch",
     "build": "rollup --config rollup.config.js",
     "test": "node ./dist/runTest.js",
-    "pub": "npm run build && vsce publish"
+    "pub": "npm run build && vsce publish",
+    "pack": "npm run build && vsce package"
   },
   "publisher": "peakchen90",
   "engines": {
