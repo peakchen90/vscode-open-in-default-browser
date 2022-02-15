@@ -2,13 +2,13 @@
   "name": "open-html-in-browser",
   "displayName": "Open In Default Browser",
   "description": "A VSCode extension to fast open html file in browser",
-  "version": "2.1.7",
+  "version": "2.1.9",
   "main": "./dist/extension.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js --watch",
     "build": "rollup --config rollup.config.js",
     "test": "node ./dist/runTest.js",
-    "p": "npm run build && vsce publish"
+    "pub": "npm run build && vsce publish"
   },
   "publisher": "peakchen90",
   "engines": {

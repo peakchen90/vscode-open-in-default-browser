@@ -119,7 +119,7 @@ export default class LocalServer {
   }
 
   private _handleRequest(req: express.Request, res: express.Response, next: express.NextFunction): void {
-    const relativePath = decodeURIComponent(req.url).replace(/^\//, '');
+    const relativePath = decodeURIComponent(req.path).replace(/^\//, '');
 
     const filename = path.resolve(this.rootPath, relativePath);
 
