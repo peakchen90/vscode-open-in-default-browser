@@ -1,3 +1,6 @@
+## 2.1.10: 2022/11/28
+- Fix: [#32](https://github.com/peakchen90/vscode-open-in-default-browser/pull/32)
+
 ## 2.1.9: 2022/02/15
 - Fix: [#28](https://github.com/peakchen90/vscode-open-in-default-browser/issues/28)
 
