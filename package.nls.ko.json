@@ -1,5 +1,5 @@
 {
-  "openInDefaultBrowser.title": "브라우저에서 열려",
+  "openInDefaultBrowser.title": "브라우저에서 열기",
   "openInDefaultBrowser.openWithLocalHttpServer": "로컬 HTTP 서버로 열기",
   "run.nonHTMLFile": "HTM이 아닌 파일 또는 HTML이 아닌 파일을 열 수 없습니다.",
   "run.localServer.createError": "서비스 생성 실패",
