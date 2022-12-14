@@ -107,7 +107,7 @@
   "dependencies": {
     "art-template": "^4.13.2",
     "compression": "^1.7.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-art-template": "^1.0.1",
     "getport": "^0.1.0",
     "open": "^8.0.9",
