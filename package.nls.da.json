@@ -1,0 +1,8 @@
+{
+  "openInDefaultBrowser.title": "Åbn i standardbrowser",
+  "openInDefaultBrowser.openWithLocalHttpServer": "Åbn med lokal http-server",
+  "run.nonHTMLFile": "Kan ikke åbne ikke-HTM- eller ikke-HTML-filer",
+  "run.localServer.createError": "Opret tjeneste mislykkedes",
+  "run.localServer.noMatchWorkspace": "Der opstod en fejl ved åbning af browseren. Genstart VSCODE og prøv igen!",
+  "run.localServer.unknownException": "Ukendt undtagelse"
+}
