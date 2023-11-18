@@ -4,6 +4,8 @@ import {openBrowserByServer} from './local-server';
 import {COMMAND, CONFIGURATION} from './config';
 import {openBrowser} from './utils/utils';
 
+const PRIVATE_RE = /\.(\w+)$/
+
 /**
  * 注册 openInDefaultBrowser 命令
  */
@@ -12,7 +14,7 @@ export function registerOpenInBrowserCommand(context: vscode.ExtensionContext): 
     let filename = '';
 
     if (evt && typeof evt.path === 'string') {
-      const match = evt.path.match(/\.(\w+)$/);
+      const match = evt.path.match(PRIVATE_RE);
       if (match) {
         filename = evt.fsPath;
       }
