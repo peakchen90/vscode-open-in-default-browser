@@ -1,0 +1,8 @@
+{
+  "openInDefaultBrowser.title": "Otwórz w domyślnej przeglądarce",
+  "openInDefaultBrowser.openWithLocalHttpServer": "Otwórz za pomocą lokalnego serwera http",
+  "run.nonHTMLFile": "Nie można otworzyć plików innych niż HTML lub HTML",
+  "run.localServer.createError": "Tworzenie usługi nie powiodło się",
+  "run.localServer.noMatchWorkspace": "Wystąpił błąd podczas otwierania przeglądarki. Uruchom ponownie VSCODE i spróbuj ponownie!",
+  "run.localServer.unknownException": "Nieznany wyjątek"
+}
